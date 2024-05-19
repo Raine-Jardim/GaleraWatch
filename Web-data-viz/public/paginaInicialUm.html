@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Logado 👍.
+    <br>
+    <br>
+    Tanque
+    <input type="checkbox" id="check_Tanque" onclick="contadorChecks()">
+    <br>
+    Dano
+    <input type="checkbox" id="check_Dano" onclick="contadorChecks()">
+    <br>
+    Suporte
+    <input type="checkbox" id="check_Suporte" onclick="contadorChecks()">
+    <br>
+    Todos
+    <input type="checkbox" id="check_Todos" onclick="contadorChecks()">
+
+</body>
+
+</html>
+
+<script>
+
+
+
+    function contadorChecks() {
+
+        const tanqueChecked = check_Tanque.value;
+        const danoChecked = check_Dano.value;
+        const suporteChecked = check_Suporte.value;
+        const todosChecked = check_Todos.value;
+
+        let qtdMaxima = 0;
+
+        let checkTanqueStatus = false;
+        let checkDanoStatus = false;
+        let checkSuporteStatus = false;
+        let checkTodosStatus = false;
+
+        if (check_Tanque.checked == true) {
+
+            checkTanqueStatus = true;
+
+            qtdMaxima++
+
+        }
+
+        if (check_Dano.checked == true) {
+
+            checkDanoStatus = true;
+
+            qtdMaxima++
+
+        }
+
+        if (check_Suporte.checked == true) {
+
+            checkSuporteStatus = true;
+
+            qtdMaxima++
+
+        }
+
+        if (check_Todos.checked == true) {
+
+            checkTodosStatus = true;
+
+        }
+
+        if (qtdMaxima == 2) {
+
+            check_Tanque.disabled = true;
+            check_Dano.disabled = true;
+            check_Suporte.disabled = true;
+            check_Todos.disabled = true;
+
+            if (checkTanqueStatus) {
+
+                check_Tanque.disabled = false;
+
+            }
+
+            if (checkDanoStatus) {
+
+                check_Dano.disabled = false;
+
+            }
+
+            if (checkSuporteStatus) {
+
+                check_Suporte.disabled = false;
+
+            }
+
+        } else if (checkTodosStatus) {
+
+            check_Tanque.disabled = true;
+            check_Dano.disabled = true;
+            check_Suporte.disabled = true;
+
+            check_Tanque.checked = false;
+            check_Dano.checked = false;
+            check_Suporte.checked = false;
+
+        } else {
+
+            check_Tanque.disabled = false;
+            check_Dano.disabled = false;
+            check_Suporte.disabled = false;
+            check_Todos.disabled = false;
+
+        }
+
+        console.log('Tanque ' + checkTanqueStatus);
+        console.log('Dano ' + checkDanoStatus);
+        console.log('Suporte ' + checkSuporteStatus);
+        console.log('Todos ' + checkTodosStatus);
+        console.log('\n');
+
+    }
+
+</script>
