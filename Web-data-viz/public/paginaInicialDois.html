@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+
+        padding: 0;
+        margin: 0;
+
+        background-color: rgb(255, 210, 210);
+
+    }
+
+    #containerPersonagens {
+
+        width: 90vw;
+        height: 90vh;
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    .containerTanque {
+
+        display: flex;
+
+    }
+
+    .cardPersonagem {
+
+        width: 120px;
+        height: 140px;
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .cardPersonagem input {
+
+        margin: 0;
+
+    }
+
+    .cardPersonagem span {
+
+        width: 100%;
+        height: 20%;
+        text-align: center;
+        background-color: white;
+
+    }
+
+    .check {
+
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    #reinhardt {
+
+        background-image: url("https://d15f34w2p8l1cc.cloudfront.net/overwatch/490d2f79f8547d6e364306af60c8184fb8024b8e55809e4cc501126109981a65.png");
+        background-size: 100%;
+
+    }
+
+    #echo {
+
+        background-image: url('https://d15f34w2p8l1cc.cloudfront.net/overwatch/f086bf235cc6b7f138609594218a8385c8e5f6405a39eceb0deb9afb429619fe.png');
+        background-size: 100%;
+
+    }
+
+    #mercy {
+
+        background-image: url('https://d15f34w2p8l1cc.cloudfront.net/overwatch/2508ddd39a178d5f6ae993ab43eeb3e7961e5a54a9507e6ae347381193f28943.png');
+        background-size: 100%;
+
+    }
+</style>
+
+<body>
+
+    <div>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/686/686317.png" alt="" width="5%">
+            Todos
+        </div>
+        <div>
+            <button>Voltar</button>
+        </div>
+    </div>
+
+    <div id="containerPersonagens">
+
+        <div class="containerTanque">
+
+            <div>
+
+                <div class="cardPersonagem" id="dva">
+                    <input type="checkbox" id="checkDva" class="check" onclick="verificarCheck()">
+                    <span>D.VA</span>
+                </div>
+
+                <div class="cardPersonagem" id="doomfist">
+                    <input type="checkbox" id="checkDoomfist" class="check">
+                    <span>DOOMFIST</span>
+                </div>
+
+                <div class="cardPersonagem" id="junkerQueen">
+                    <input type="checkbox" id="checkJunkerQueen" class="check">
+                    <span>JUNKER QUEEN</span>
+                </div>
+
+                <div class="cardPersonagem" id="mauga">
+                    <input type="checkbox" id="checkMauga" class="check">
+                    <span>MAUGA</span>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="cardPersonagem" id="orisa">
+                    <input type="checkbox" id="checkOrisa" class="check">
+                    <span>ORISA</span>
+                </div>
+
+                <div class="cardPersonagem" id="ramattra">
+                    <input type="checkbox" id="checkRamattra" class="check">
+                    <span>RAMATTRA</span>
+                </div>
+
+                <div class="cardPersonagem" id="reinhardt">
+                    <input type="checkbox" id="checkReinhardt" class="check">
+                    <span>REINHARDT</span>
+                </div>
+
+                <div class="cardPersonagem" id="roadhog">
+                    <input type="checkbox" id="checkRoadhog" class="check">
+                    <span>ROADHOG</span>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="cardPersonagem" id="sigma">
+                    <input type="checkbox" id="checkSigma" class="check">
+                    <span>SIGMA</span>
+                </div>
+
+                <div class="cardPersonagem" id="winston">
+                    <input type="checkbox" id="checkWinston" class="check">
+                    <span>WINSTON</span>
+                </div>
+
+                <div class="cardPersonagem" id="wreckingBall">
+                    <input type="checkbox" id="checkWreckingBall" class="check">
+                    <span>WRECKING BALL</span>
+                </div>
+
+                <div class="cardPersonagem" id="zarya">
+                    <input type="checkbox" id="checkZarya" class="check">
+                    <span>ZARYA</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="containerDano">
+
+            <div class="cardPersonagem" id="echo">
+                <input type="checkbox" id="checkEcho" class="check">
+                <span>ECHO</span>
+            </div>
+
+        </div>
+
+        <div class="containerDano">
+
+            <div class="cardPersonagem" id="mercy">
+                <input type="checkbox" id="checkMercy" class="check">
+                <span>MERCY</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function verificarCheck() {
+
+        console.log('I checked that fact? ' + checkDva.checked);
+
+    }
+
+</script>
