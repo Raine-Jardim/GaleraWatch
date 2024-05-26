@@ -26,19 +26,52 @@
 
     }
 
-    .containerTanque {
+    #containerTanque {
 
-        display: flex;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        gap: 2% 2%;
+
+        width: 25%;
+        background-color: brown;
+        padding: 1%;
+
+    }
+
+    #containerDano {
+
+        display: grid;
+        grid-template-columns: 19% 19% 19% 19% 19%;
+        gap: 2% 2%;
+
+        width: 40%;
+        background-color: brown;
+        padding: 1%;
+
+    }
+
+    #containerSuporte {
+
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        gap: 2% 2%;
+
+        width: 25%;
+        background-color: brown;
+        padding: 1%;
 
     }
 
     .cardPersonagem {
 
-        width: 120px;
-        height: 140px;
-
         display: flex;
         flex-direction: column;
+
+    }
+
+    .cardPersonagem img {
+
+        background-size: 100%;
 
     }
 
@@ -61,32 +94,11 @@
 
         width: 100%;
         height: 100%;
-        opacity: 0;
-    }
-
-    #reinhardt {
-
-        background-image: url("https://d15f34w2p8l1cc.cloudfront.net/overwatch/490d2f79f8547d6e364306af60c8184fb8024b8e55809e4cc501126109981a65.png");
-        background-size: 100%;
-
-    }
-
-    #echo {
-
-        background-image: url('https://d15f34w2p8l1cc.cloudfront.net/overwatch/f086bf235cc6b7f138609594218a8385c8e5f6405a39eceb0deb9afb429619fe.png');
-        background-size: 100%;
-
-    }
-
-    #mercy {
-
-        background-image: url('https://d15f34w2p8l1cc.cloudfront.net/overwatch/2508ddd39a178d5f6ae993ab43eeb3e7961e5a54a9507e6ae347381193f28943.png');
-        background-size: 100%;
-
+        opacity: 50%;
     }
 </style>
 
-<body>
+<body onload="carregarCardsPersonagens()">
 
     <div>
         <div>
@@ -100,97 +112,15 @@
 
     <div id="containerPersonagens">
 
-        <div class="containerTanque">
-
-            <div>
-
-                <div class="cardPersonagem" id="dva">
-                    <input type="checkbox" id="checkDva" class="check" onclick="verificarCheck()">
-                    <span>D.VA</span>
-                </div>
-
-                <div class="cardPersonagem" id="doomfist">
-                    <input type="checkbox" id="checkDoomfist" class="check">
-                    <span>DOOMFIST</span>
-                </div>
-
-                <div class="cardPersonagem" id="junkerQueen">
-                    <input type="checkbox" id="checkJunkerQueen" class="check">
-                    <span>JUNKER QUEEN</span>
-                </div>
-
-                <div class="cardPersonagem" id="mauga">
-                    <input type="checkbox" id="checkMauga" class="check">
-                    <span>MAUGA</span>
-                </div>
-
-            </div>
-
-            <div>
-
-                <div class="cardPersonagem" id="orisa">
-                    <input type="checkbox" id="checkOrisa" class="check">
-                    <span>ORISA</span>
-                </div>
-
-                <div class="cardPersonagem" id="ramattra">
-                    <input type="checkbox" id="checkRamattra" class="check">
-                    <span>RAMATTRA</span>
-                </div>
-
-                <div class="cardPersonagem" id="reinhardt">
-                    <input type="checkbox" id="checkReinhardt" class="check">
-                    <span>REINHARDT</span>
-                </div>
-
-                <div class="cardPersonagem" id="roadhog">
-                    <input type="checkbox" id="checkRoadhog" class="check">
-                    <span>ROADHOG</span>
-                </div>
-
-            </div>
-
-            <div>
-
-                <div class="cardPersonagem" id="sigma">
-                    <input type="checkbox" id="checkSigma" class="check">
-                    <span>SIGMA</span>
-                </div>
-
-                <div class="cardPersonagem" id="winston">
-                    <input type="checkbox" id="checkWinston" class="check">
-                    <span>WINSTON</span>
-                </div>
-
-                <div class="cardPersonagem" id="wreckingBall">
-                    <input type="checkbox" id="checkWreckingBall" class="check">
-                    <span>WRECKING BALL</span>
-                </div>
-
-                <div class="cardPersonagem" id="zarya">
-                    <input type="checkbox" id="checkZarya" class="check">
-                    <span>ZARYA</span>
-                </div>
-
-            </div>
+        <div id="containerTanque">
 
         </div>
 
-        <div class="containerDano">
-
-            <div class="cardPersonagem" id="echo">
-                <input type="checkbox" id="checkEcho" class="check">
-                <span>ECHO</span>
-            </div>
+        <div id="containerDano">
 
         </div>
 
-        <div class="containerDano">
-
-            <div class="cardPersonagem" id="mercy">
-                <input type="checkbox" id="checkMercy" class="check">
-                <span>MERCY</span>
-            </div>
+        <div id="containerSuporte">
 
         </div>
 
@@ -202,9 +132,186 @@
 
 <script>
 
-    function verificarCheck() {
+    const listaNomesPersonagensTanque = ['D.Va', 'Doomfist', 'Junker Queen', 'Mauga', 'Orisa', 'Ramattra', 'Reinhardt', 'Roadhog', 'Sigma', 'Winston', 'Wrecking Ball', 'Zarya'];
+    const listaNomesPersonagensTanqueParaID = ['dva', 'doomfist', 'junkerQueen', 'mauga', 'orisa', 'ramattra', 'reinhardt', 'roadhog', 'sigma', 'winston', 'wreckingBall', 'zarya'];
+    const listaImagensPersonagensTanque = ['https://abre.ai/imagemdva', 'https://abre.ai/imagemdoomfist', 'https://abre.ai/imagemjunkerqueen', 'https://abre.ai/imagemmauga', 'https://abre.ai/imagemorisa', 'https://abre.ai/imagemramattra', 'https://abre.ai/imagemreinhardt', 'https://abre.ai/imagemroadhog', 'https://abre.ai/imagemsigma', 'https://abre.ai/imagemwinston', 'https://abre.ai/imagemwreckingball', 'https://abre.ai/imagemzarya'];
 
-        console.log('I checked that fact? ' + checkDva.checked);
+    const listaNomesPersonagensDano = ['Ashe', 'Bastion', 'Cassidy', 'Echo', 'Genji', 'Hanzo', 'Junkrat', 'Mei', 'Pharah', 'Reaper', 'Sojourn', 'Soldado: 76', 'Sombra', 'Symmetra', 'Torbjörn', 'Tracer', 'Venture', 'Widowmaker'];
+    const listaNomesPersonagensDanoParaID = ['ashe', 'bastion', 'cassidy', 'echo', 'genji', 'hanzo', 'junkrat', 'mei', 'pharah', 'reaper', 'sojourn', 'soldado76', 'sombra', 'symmetra', 'torbjorn', 'tracer', 'venture', 'widowmaker'];
+    const listaImagensPersonagensDano = ['https://abre.ai/imagemashe', 'https://abre.ai/imagembastion', 'https://abre.ai/imagemcassidy', 'https://abre.ai/imagemecho', 'https://abre.ai/imagemgenji', 'https://abre.ai/imagemhanzo', 'https://abre.ai/imagemjunkrat', 'https://abre.ai/imagemmei', 'https://abre.ai/imagemphara', 'https://abre.ai/imagemreaper', 'https://abre.ai/imagemsojourn', 'https://abre.ai/imagemsoldado76', 'https://abre.ai/imagemsombra', 'https://abre.ai/imagemsymmetra', 'https://abre.ai/imagemtorbjorn', 'https://abre.ai/imagemtracer', 'https://abre.ai/imagemventure', 'https://abre.ai/imagemwidowmaker'];
+
+    const listaNomesPersonagensSuporte = ['Ana', 'Baptiste', 'Brigitte', 'Illari', 'Kiriko', 'Lifeweaver', 'Lúcio', 'Mercy', 'Moira', 'Zenyatta'];
+    const listaNomesPersonagensSuporteParaID = ['ana', 'baptiste', 'brigitte', 'illari', 'kiriko', 'lifeweaver', 'lucio', 'mercy', 'moira', 'zenyatta'];
+    const listaImagensPersonagensSuporte = ['https://abre.ai/imagemana', 'https://abre.ai/imagembaptiste', 'https://abre.ai/imagembrigitte', 'https://abre.ai/imagemillari', 'https://abre.ai/imagemkiriko', 'https://abre.ai/imagemlifeweaver', 'https://abre.ai/imagemlucio', 'https://abre.ai/imagemmercy', 'https://abre.ai/imagemmoira', 'https://abre.ai/imagemzenyatta'];
+
+    function carregarCardsPersonagens() {
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensTanque[contadorPosicao];
+            const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
+            const linkImagemPersonagem = listaImagensPersonagensTanque[contadorPosicao];
+
+            containerTanque.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasTanque()">
+            <span>${nomePersonagem.toUpperCase()}</span>
+            </div>`;
+
+        }
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensDano[contadorPosicao];
+            const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
+            const linkImagemPersonagem = listaImagensPersonagensDano[contadorPosicao];
+
+            containerDano.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasDano()">
+            <span>${nomePersonagem.toUpperCase()}</span>
+            </div>`;
+
+        }
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensSuporte[contadorPosicao];
+            const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
+            const linkImagemPersonagem = listaImagensPersonagensSuporte[contadorPosicao];
+
+            containerSuporte.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasSuporte()">
+            <span>${nomePersonagem.toUpperCase()}</span>
+            </div>`;
+
+        }
+
+    }
+
+    function verificarCheckTodos() {
+
+
+
+    }
+
+    function verificarCheckApenasTanque() {
+
+        let qtdPersonagensChecked = 0;
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensTanqueParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+            
+            if (checkPersonagem.checked) {
+                
+                qtdPersonagensChecked++;
+                // console.log(`Quantidade de Tanque: ${qtdPersonagensChecked}`);
+                // console.log(`Personagem checado: ${listaNomesPersonagensTanque[contadorPosicao]}`);
+
+            }
+
+            if (qtdPersonagensChecked == 3) {
+                
+                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
+                    const nomePersonagem2 = listaNomesPersonagensTanqueParaID[contadorPosicao2];
+                    const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+                    
+                    if (!checkPersonagem2.checked) {
+                        
+                        checkPersonagem2.disabled = true;
+                        
+                    }
+                }
+
+            } else {
+
+                checkPersonagem.disabled = false;
+
+            }
+
+        }
+
+
+
+
+    }
+
+    function verificarCheckApenasDano() {
+
+        let qtdPersonagensChecked = 0;
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensDanoParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+
+            if (checkPersonagem.checked) {
+                
+                qtdPersonagensChecked++;
+                // console.log(`Quantidade de Dano: ${qtdPersonagensChecked}`);
+                // console.log(`Personagem checado: ${listaNomesPersonagensDano[contadorPosicao]}`);
+
+            }
+
+            if (qtdPersonagensChecked == 3) {
+                
+                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
+                    const nomePersonagem2 = listaNomesPersonagensDanoParaID[contadorPosicao2];
+                    const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+                    
+                    if (!checkPersonagem2.checked) {
+                        
+                        checkPersonagem2.disabled = true;
+                        
+                    }
+                }
+
+            } else {
+
+                checkPersonagem.disabled = false;
+
+            }
+
+        }
+
+    }
+
+    function verificarCheckApenasSuporte() {
+
+        let qtdPersonagensChecked = 0;
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensSuporteParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+
+            if (checkPersonagem.checked) {
+                
+                qtdPersonagensChecked++;
+                // console.log(`Quantidade de Suporte: ${qtdPersonagensChecked}`);
+                // console.log(`Personagem checado: ${listaNomesPersonagensSuporte[contadorPosicao]}`);
+
+            }
+
+            if (qtdPersonagensChecked == 3) {
+                
+                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
+                    const nomePersonagem2 = listaNomesPersonagensSuporteParaID[contadorPosicao2];
+                    const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+                    
+                    if (!checkPersonagem2.checked) {
+                        
+                        checkPersonagem2.disabled = true;
+                        
+                    }
+                }
+
+            } else {
+
+                checkPersonagem.disabled = false;
+
+            }
+        }
 
     }
 

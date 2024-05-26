@@ -34,69 +34,49 @@
 
     function contadorChecks() {
 
-        let qtdMaxima = 0;
+        let qtdChecked = 0;
+        
+        if (check_Tanque.checked) {
 
-        let checkTanqueStatus = false;
-        let checkDanoStatus = false;
-        let checkSuporteStatus = false;
-        let checkTodosStatus = false;
-
-        if (check_Tanque.checked == true) {
-
-            checkTanqueStatus = true;
-
-            qtdMaxima++
+            qtdChecked++
 
         }
 
-        if (check_Dano.checked == true) {
+        if (check_Dano.checked) {
 
-            checkDanoStatus = true;
-
-            qtdMaxima++
+            qtdChecked++
 
         }
 
-        if (check_Suporte.checked == true) {
+        if (check_Suporte.checked) {
 
-            checkSuporteStatus = true;
-
-            qtdMaxima++
+            qtdChecked++
 
         }
 
-        if (check_Todos.checked == true) {
-
-            checkTodosStatus = true;
-
-        }
-
-        if (qtdMaxima == 2) {
-
-            check_Tanque.disabled = true;
-            check_Dano.disabled = true;
-            check_Suporte.disabled = true;
+        if (qtdChecked == 2) {
+            
             check_Todos.disabled = true;
 
-            if (checkTanqueStatus) {
+            if (!check_Tanque.checked) {
 
-                check_Tanque.disabled = false;
-
-            }
-
-            if (checkDanoStatus) {
-
-                check_Dano.disabled = false;
+                check_Tanque.disabled = true;
 
             }
 
-            if (checkSuporteStatus) {
+            if (!check_Dano.checked) {
 
-                check_Suporte.disabled = false;
+                check_Dano.disabled = true;
 
             }
 
-        } else if (checkTodosStatus) {
+            if (!check_Suporte.checked) {
+
+                check_Suporte.disabled = true;
+
+            }
+
+        } else if (check_Todos.checked) {
 
             check_Tanque.disabled = true;
             check_Dano.disabled = true;
