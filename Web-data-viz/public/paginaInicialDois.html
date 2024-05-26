@@ -71,7 +71,7 @@
 
     .cardPersonagem img {
 
-        background-size: 100%;
+        background-size: auto;
 
     }
 
@@ -153,7 +153,7 @@
             const linkImagemPersonagem = listaImagensPersonagensTanque[contadorPosicao];
 
             containerTanque.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
-            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasTanque()">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckTodos()">
             <span>${nomePersonagem.toUpperCase()}</span>
             </div>`;
 
@@ -166,7 +166,7 @@
             const linkImagemPersonagem = listaImagensPersonagensDano[contadorPosicao];
 
             containerDano.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
-            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasDano()">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckTodos()">
             <span>${nomePersonagem.toUpperCase()}</span>
             </div>`;
 
@@ -179,7 +179,7 @@
             const linkImagemPersonagem = listaImagensPersonagensSuporte[contadorPosicao];
 
             containerSuporte.innerHTML += `<div class="cardPersonagem" id="div_${nomePersonagemID}" style="background-image: url(${linkImagemPersonagem});">
-            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckApenasSuporte()">
+            <input type="checkbox" id="check_${nomePersonagemID}" class="check" onclick="verificarCheckTodos()">
             <span>${nomePersonagem.toUpperCase()}</span>
             </div>`;
 
@@ -189,6 +189,109 @@
 
     function verificarCheckTodos() {
 
+        let qtdPersonagensChecked = 0;
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensTanqueParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+
+            if (checkPersonagem.checked) {
+
+                qtdPersonagensChecked++;
+
+            }
+
+        }
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensDanoParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+
+            if (checkPersonagem.checked) {
+
+                qtdPersonagensChecked++;
+
+            }
+
+        }
+
+        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
+
+            const nomePersonagem = listaNomesPersonagensSuporteParaID[contadorPosicao];
+            const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
+
+            if (checkPersonagem.checked) {
+
+                qtdPersonagensChecked++;
+
+            }
+
+        }
+
+        if (qtdPersonagensChecked == 3) {
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensTanqueParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                if (!checkPersonagem2.checked) {
+
+                    checkPersonagem2.disabled = true;
+
+                }
+            }
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensDanoParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                if (!checkPersonagem2.checked) {
+
+                    checkPersonagem2.disabled = true;
+
+                }
+            }
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensSuporteParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                if (!checkPersonagem2.checked) {
+
+                    checkPersonagem2.disabled = true;
+
+                }
+            }
+
+        } else {
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensTanqueParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                checkPersonagem2.disabled = false;
+
+            }
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensDanoParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                checkPersonagem2.disabled = false;
+
+            }
+
+            for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
+                const nomePersonagem2 = listaNomesPersonagensSuporteParaID[contadorPosicao2];
+                const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
+
+                checkPersonagem2.disabled = false;
+
+            }
+
+        }
 
 
     }
@@ -201,9 +304,9 @@
 
             const nomePersonagem = listaNomesPersonagensTanqueParaID[contadorPosicao];
             const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
-            
+
             if (checkPersonagem.checked) {
-                
+
                 qtdPersonagensChecked++;
                 // console.log(`Quantidade de Tanque: ${qtdPersonagensChecked}`);
                 // console.log(`Personagem checado: ${listaNomesPersonagensTanque[contadorPosicao]}`);
@@ -211,15 +314,15 @@
             }
 
             if (qtdPersonagensChecked == 3) {
-                
-                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
+
+                for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
                     const nomePersonagem2 = listaNomesPersonagensTanqueParaID[contadorPosicao2];
                     const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-                    
+
                     if (!checkPersonagem2.checked) {
-                        
+
                         checkPersonagem2.disabled = true;
-                        
+
                     }
                 }
 
@@ -230,9 +333,6 @@
             }
 
         }
-
-
-
 
     }
 
@@ -246,7 +346,7 @@
             const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
 
             if (checkPersonagem.checked) {
-                
+
                 qtdPersonagensChecked++;
                 // console.log(`Quantidade de Dano: ${qtdPersonagensChecked}`);
                 // console.log(`Personagem checado: ${listaNomesPersonagensDano[contadorPosicao]}`);
@@ -254,15 +354,15 @@
             }
 
             if (qtdPersonagensChecked == 3) {
-                
-                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
+
+                for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
                     const nomePersonagem2 = listaNomesPersonagensDanoParaID[contadorPosicao2];
                     const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-                    
+
                     if (!checkPersonagem2.checked) {
-                        
+
                         checkPersonagem2.disabled = true;
-                        
+
                     }
                 }
 
@@ -286,7 +386,7 @@
             const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
 
             if (checkPersonagem.checked) {
-                
+
                 qtdPersonagensChecked++;
                 // console.log(`Quantidade de Suporte: ${qtdPersonagensChecked}`);
                 // console.log(`Personagem checado: ${listaNomesPersonagensSuporte[contadorPosicao]}`);
@@ -294,15 +394,15 @@
             }
 
             if (qtdPersonagensChecked == 3) {
-                
-                for (contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
+
+                for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
                     const nomePersonagem2 = listaNomesPersonagensSuporteParaID[contadorPosicao2];
                     const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-                    
+
                     if (!checkPersonagem2.checked) {
-                        
+
                         checkPersonagem2.disabled = true;
-                        
+
                     }
                 }
 
