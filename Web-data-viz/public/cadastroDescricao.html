@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     Descrição:
     <input type="text" id="input_descricao">
     <button onclick="validarDescricao()">Finalizar</button>
 
 </body>
+
 </html>
 
 <script>
@@ -26,10 +29,44 @@
 
         } else {
 
-            alert('Boa 👍')
+            guardarBanco();
 
         }
 
+    }
+
+    function guardarBanco() {
+
+        const descricao = input_descricao.value;
+
+        fetch(`/personagens/cadastrarDescricao`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                descricaoServer: descricao,
+                idUsuario: sessionStorage.getItem("ID_USUARIO")
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    setTimeout(() => {
+                        window.location = "galeraWatch.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
 
 </script>
