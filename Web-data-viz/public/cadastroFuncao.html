@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="js/sessao.js"></script>
 </head>
 
-<body>
-
-    <br>
-    <br>
+<body onload="validarSessao()">
     Tanque
     <input type="checkbox" id="check_Tanque" onclick="contadorChecks()">
     <br>
@@ -23,7 +22,7 @@
     Todos
     <input type="checkbox" id="check_Todos" onclick="contadorChecks()">
 
-    <button onclick="guardarRoles()">Pronto</button>
+    <button onclick="guardarRoles()">Continuar</button>
 
 </body>
 
@@ -130,15 +129,22 @@
 
     function guardarBanco() {
 
+        // let idUsuario = ;
+
+        var corpo = {
+            funcao: listaFuncao,
+            idUsuario: sessionStorage.ID_USUARIO
+        }
+
         // v nome do arquivo, depois da função que quer chamar
-        fetch("/funcao/cadastrarFuncao", {
+        fetch(`/personagens/cadastrarFuncao`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                funcaoServer: listaFuncao
-            }),
+            body: JSON.stringify(
+                corpo
+            ),
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);

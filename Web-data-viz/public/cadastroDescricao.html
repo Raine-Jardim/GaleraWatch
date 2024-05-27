@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Descrição:
+    <input type="text" id="input_descricao">
+    <button onclick="validarDescricao()">Finalizar</button>
+
+</body>
+</html>
+
+<script>
+
+    function validarDescricao() {
+
+        const descricao = input_descricao.value;
+
+        if (descricao.length <= 0) {
+
+            alert('Para de ser antisocial');
+
+        } else {
+
+            alert('Boa 👍')
+
+        }
+
+    }
+
+</script>

@@ -1,16 +1,18 @@
-// var funcaoModel = require("../models/funcaoModel");
+// var personagensModel = require("../models/personagensModel");
 
-// function cadastrarFuncao(req, res) {
+// function cadastrarPersonagens(req, res) {
 //     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-//     var funcao = req.body.funcaoServer;
+//     var personagem1 = req.body.personagem1Server;
+//     var personagem2 = req.body.personagem2Server;
+//     var personagem3 = req.body.personagem3Server;
 
 //     // Faça as validações dos valores
-//     if (funcao == undefined) {
-//         res.status(400).send("Sua função está undefined!");
+//     if (personagem1 == undefined || personagem2 == undefined || personagem3 == undefined) {
+//         res.status(400).send("Seu personagem está undefined!");
 //     } else {
 
 //         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-//         funcaoModel.cadastrarFuncao(funcao)
+//         personagensModel.cadastrarPersonagens(personagem1, personagem2, personagem3)
 //             .then(
 //                 function (resultado) {
 //                     res.json(resultado);
@@ -29,5 +31,5 @@
 // }
 
 // module.exports = {
-//     cadastrarFuncao
+//     cadastrarPersonagens
 // }
