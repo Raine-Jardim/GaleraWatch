@@ -1,14 +1,16 @@
 create database GaleraWatch;
 
 create table GaleraWatch.Usuarios(
-	idUsuario int auto_increment,
+	id int auto_increment,
     nome varchar(45),
     email varchar(45),
     senha varchar(45),
     
-    primary key idUsuario(idUsuario)
+    primary key idUsuario(id)
 
 );
+
+select * from GaleraWatch.usuarios;
 
 create table GaleraWatch.Perfil(
 	idPerfil int auto_increment,
@@ -20,6 +22,8 @@ create table GaleraWatch.Perfil(
     fkUsuario int,
     
     primary key idPerfil(idPerfil),
-    foreign key fkUsuario(fkUsuario) references Usuario(idUsuario)
+    foreign key fkUsuario(fkUsuario) references Usuarios(id)
 
 ) auto_increment = 1000;
+
+select * from GaleraWatch.perfil;

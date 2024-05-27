@@ -14,9 +14,14 @@ var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
 var app = express();
+// Criar uma váriavel pra rota aqui!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+var funcao = require("./src/routes/funcao.js"); // <- Colocar nome do arquivo da rota ali dentro 
+// Deixar a rota certinha tipo nos de baixo aqui vvvvv
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -25,6 +30,8 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+// Criar esse bagulho aqui !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.use("/funcao", funcao);
 
 app.listen(PORTA_APP, function () {
     console.log(`

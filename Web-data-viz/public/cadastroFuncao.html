@@ -9,7 +9,6 @@
 
 <body>
 
-    Logado 👍.
     <br>
     <br>
     Tanque
@@ -24,7 +23,7 @@
     Todos
     <input type="checkbox" id="check_Todos" onclick="contadorChecks()">
 
-    <button>Pronto</button>
+    <button onclick="guardarRoles()">Pronto</button>
 
 </body>
 
@@ -32,10 +31,12 @@
 
 <script>
 
+    const listaFuncao = [];
+
     function contadorChecks() {
 
         let qtdChecked = 0;
-        
+
         if (check_Tanque.checked) {
 
             qtdChecked++
@@ -55,7 +56,7 @@
         }
 
         if (qtdChecked == 2) {
-            
+
             check_Todos.disabled = true;
 
             if (!check_Tanque.checked) {
@@ -95,6 +96,68 @@
 
         }
 
+    }
+
+    function guardarRoles() {
+
+        if (check_Tanque.checked) {
+
+            listaFuncao.push('Tanque');
+
+        }
+
+        if (check_Dano.checked) {
+
+            listaFuncao.push('Dano');
+
+        }
+
+        if (check_Suporte.checked) {
+
+            listaFuncao.push('Suporte');
+
+        }
+
+        if (check_Todos.checked) {
+
+            listaFuncao.push('Todos');
+
+        }
+
+        guardarBanco();
+
+    }
+
+    function guardarBanco() {
+
+        // v nome do arquivo, depois da função que quer chamar
+        fetch("/funcao/cadastrarFuncao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                funcaoServer: listaFuncao
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    setTimeout(() => {
+                        window.location = "cadastroPersonagens.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
 
 </script>
