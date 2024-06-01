@@ -9,7 +9,7 @@
     <script src="js/sessao.js"></script>
 </head>
 
-<body>
+<body onload="buscarDados()">
     Tanque
     <input type="checkbox" id="check_Tanque" onclick="contadorChecks()">
     <br>
@@ -123,7 +123,7 @@
 
         }
 
-        buscarDados();
+        guardarBanco();
 
     }
 
@@ -154,7 +154,6 @@
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
                 });
-                guardarBanco();
 
             } else {
 
