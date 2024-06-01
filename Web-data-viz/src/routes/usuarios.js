@@ -16,7 +16,7 @@ router.post("/autenticarLogin", function (req, res) {
     usuarioController.autenticarLogin(req, res);
 });
 
-router.post("/listarUsuarios", function (req, res) {
+router.get("/listarUsuarios", function (req, res) {
     usuarioController.listarUsuarios(req, res);
 });
 

@@ -134,6 +134,8 @@
 
 <script>
 
+    let qtdPersonagensChecked = 0;
+
     const listaNomesPersonagensTanque = ['D.Va', 'Doomfist', 'Junker Queen', 'Mauga', 'Orisa', 'Ramattra', 'Reinhardt', 'Roadhog', 'Sigma', 'Winston', 'Wrecking Ball', 'Zarya'];
     const listaNomesPersonagensTanqueParaID = ['dva', 'doomfist', 'junkerQueen', 'mauga', 'orisa', 'ramattra', 'reinhardt', 'roadhog', 'sigma', 'winston', 'wreckingBall', 'zarya'];
     const listaImagensPersonagensTanque = ['https://abre.ai/imagemdva', 'https://abre.ai/imagemdoomfist', 'https://abre.ai/imagemjunkerqueen', 'https://abre.ai/imagemmauga', 'https://abre.ai/imagemorisa', 'https://abre.ai/imagemramattra', 'https://abre.ai/imagemreinhardt', 'https://abre.ai/imagemroadhog', 'https://abre.ai/imagemsigma', 'https://abre.ai/imagemwinston', 'https://abre.ai/imagemwreckingball', 'https://abre.ai/imagemzarya'];
@@ -194,7 +196,7 @@
 
     function verificarCheckTodos() {
 
-        let qtdPersonagensChecked = 0;
+        qtdPersonagensChecked = 0;
 
         for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
 
@@ -305,57 +307,64 @@
 
     function salvarCadastrarPersonagens() {
 
-        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
+        if (qtdPersonagensChecked < 3) {
 
-            const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
-            const nomePersonagem = listaNomesPersonagensTanque[contadorPosicao];
-            const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
+            alert("Selecione três personagens!");
 
-            if (checkPersonagem.checked) {
+        } else {
 
-                listaPersonagensEscolhidos.push(nomePersonagem);
+            for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
 
-            }
+                const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
+                const nomePersonagem = listaNomesPersonagensTanque[contadorPosicao];
+                const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
-        }
+                if (checkPersonagem.checked) {
 
-        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
+                    listaPersonagensEscolhidos.push(nomePersonagem);
 
-            const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
-            const nomePersonagem = listaNomesPersonagensDano[contadorPosicao];
-            const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
-
-            if (checkPersonagem.checked) {
-
-                listaPersonagensEscolhidos.push(nomePersonagem);
+                }
 
             }
 
-        }
+            for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
 
-        for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
+                const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
+                const nomePersonagem = listaNomesPersonagensDano[contadorPosicao];
+                const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
-            const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
-            const nomePersonagem = listaNomesPersonagensSuporte[contadorPosicao];
-            const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
+                if (checkPersonagem.checked) {
 
-            if (checkPersonagem.checked) {
+                    listaPersonagensEscolhidos.push(nomePersonagem);
 
-                listaPersonagensEscolhidos.push(nomePersonagem);
+                }
 
             }
 
+            for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
+
+                const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
+                const nomePersonagem = listaNomesPersonagensSuporte[contadorPosicao];
+                const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
+
+                if (checkPersonagem.checked) {
+
+                    listaPersonagensEscolhidos.push(nomePersonagem);
+
+                }
+
+            }
+
+            [personagem1, personagem2, personagem3] = listaPersonagensEscolhidos;
+
+            console.log(listaPersonagensEscolhidos);
+            console.log(personagem1);
+            console.log(personagem2);
+            console.log(personagem3);
+
+
+            guardarBanco();
         }
-
-        [personagem1, personagem2, personagem3] = listaPersonagensEscolhidos;
-
-        console.log(listaPersonagensEscolhidos);
-        console.log(personagem1);
-        console.log(personagem2);
-        console.log(personagem3);
-        
-
-        guardarBanco();
 
     }
 

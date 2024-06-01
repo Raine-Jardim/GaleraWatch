@@ -96,49 +96,18 @@ function autenticarLogin(req, res) {
 }
 
 function listarUsuarios(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-
-        usuarioModel.listarUsuarios(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-
-                        if (resultadoAutenticar.length > 0) {
-                            res.json({
-                                nome: resultadoAutenticar[0].nome,
-                                funcao: resultadoAutenticar[0].funcao,
-                                personagem1: resultadoAutenticar[0].personagem1,
-                                personagem2: resultadoAutenticar[0].personagem2,
-                                personagem3: resultadoAutenticar[0].personagem3,
-                                mensagem: resultadoAutenticar[0].mensagem
-                            });
-                        }
-
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    usuarioModel.listarUsuarios().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
 
 }
 

@@ -9,7 +9,7 @@
     <script src="./js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao(), listarTodosUsuarios()">
+<body onload="listarUsuarios()">
 
     <div id="div_perfilUsuario">
         Nome: <span id="span_nomeUsuario"></span>
@@ -19,13 +19,17 @@
         Personagens: <span id="span_personagens"></span>
         <br>
         Mensagem: <span id="span_mensagem"></span>
-
     </div>
 
-    <div id="container_mostrarPerfis">
+    <br>
 
+    <div id="container_mostrarPerfis">
+        <div>
+            <span>NOME</span> <span>PERSONAGENS</span> <span>FUNÇÕES</span> <span>MENSAGEM</span>
+        </div>
         <div id="div_mostrarPerfis">
-            <span id="nome_usuario"></span> - <span id="personagens"> </span> - <span id="funcoes"></span>
+            <span id="nome_usuario"></span> - <span id="personagens_usuario"> </span> - <span id="funcoes"></span> -
+            <span id="mensagem_usuario"></span>
         </div>
     </div>
 
@@ -40,55 +44,44 @@
     listaPersonagensUsuario.push(sessionStorage.PERSONAGEM1_USUARIO);
     listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM2_USUARIO);
     listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM3_USUARIO);
-    
+
     span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
     span_funcoes.innerHTML = sessionStorage.FUNCAO_USUARIO;
     span_personagens.innerHTML = listaPersonagensUsuario;
     span_mensagem.innerHTML = sessionStorage.MENSAGEM_USUARIO;
-    
 
-    function listarTodosUsuarios() {
 
-        fetch("/usuarios/listarUsuarios", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
+    function listarUsuarios() {
+        fetch("/usuarios/listarUsuarios").then(function (resposta) {
             if (resposta.ok) {
-                console.log(resposta);
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("div_mostrarPerfis");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
-                    sessionStorage.FUNCAO_USUARIO = json.funcao;
-                    sessionStorage.PERSONAGEM1_USUARIO = json.personagem1;
-                    sessionStorage.PERSONAGEM2_USUARIO = json.personagem2;
-                    sessionStorage.PERSONAGEM3_USUARIO = json.personagem3;
-                    sessionStorage.MENSAGEM_USUARIO = json.mensagem;
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
 
+                    div_mostrarPerfis.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var dados = resposta[i];
+
+                        div_mostrarPerfis.innerHTML += `<span id="nome_usuario">${dados.nome}</span> - <span id="personagens_usuario">${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}</span> - <span id="funcoes">${dados.funcao}</span> - <span id="mensagem_usuario">${dados.mensagem}</span><br>`
+
+                    }
+
+                    // finalizarAguardar();
                 });
-
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+                throw ('Houve um erro na API!');
             }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
     }
 
 </script>
