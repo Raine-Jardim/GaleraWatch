@@ -1,13 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-
-    DEU CERTO!!!!!!!!!! 👍
     
+    <script src="./js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao(), listarTodosUsuarios()">
+
+    <div id="div_perfilUsuario">
+        Nome: <span id="span_nomeUsuario"></span>
+        <br>
+        Funcões: <span id="span_funcoes"></span>
+        <br>
+        Personagens: <span id="span_personagens"></span>
+        <br>
+        Mensagem: <span id="span_mensagem"></span>
+
+    </div>
+
+    <div id="container_mostrarPerfis">
+
+        <div id="div_mostrarPerfis">
+            <span id="nome_usuario"></span> - <span id="personagens"> </span> - <span id="funcoes"></span>
+        </div>
+    </div>
+
 </body>
+
 </html>
+
+<script>
+
+    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
+    span_funcoes.innerHTML = sessionStorage.FUNCAO_USUARIO;
+    span_personagens.innerHTML = sessionStorage.PERSONAGEM1_USUARIO;
+    span_personagens.innerHTML += sessionStorage.PERSONAGEM2_USUARIO;
+    span_personagens.innerHTML += sessionStorage.PERSONAGEM3_USUARIO;
+    span_mensagem.innerHTML = sessionStorage.MENSAGEM_USUARIO;
+
+    function listarTodosUsuarios() {
+
+        fetch("/usuarios/listarUsuarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.FUNCAO_USUARIO = json.funcao;
+                    sessionStorage.PERSONAGEM1_USUARIO = json.personagem1;
+                    sessionStorage.PERSONAGEM2_USUARIO = json.personagem2;
+                    sessionStorage.PERSONAGEM3_USUARIO = json.personagem3;
+                    sessionStorage.MENSAGEM_USUARIO = json.mensagem;
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

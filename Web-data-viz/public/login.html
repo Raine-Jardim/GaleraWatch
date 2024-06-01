@@ -97,7 +97,7 @@
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/usuarios/autenticarLogin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -117,10 +117,15 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.FUNCAO_USUARIO = json.funcao;
+                    sessionStorage.PERSONAGEM1_USUARIO = json.personagem1;
+                    sessionStorage.PERSONAGEM2_USUARIO = json.personagem2;
+                    sessionStorage.PERSONAGEM3_USUARIO = json.personagem3;
+                    sessionStorage.MENSAGEM_USUARIO = json.mensagem;
 
                     setTimeout(function () {
-                        window.location = "cadastroFuncao.html";
+                        window.location = "galeraWatch.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

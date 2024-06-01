@@ -1,63 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+
+  font-family: "Karla", sans-serif;
+  font-size: 13pt;
+
+  background-color: white;
 }
 
 :root {
   --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(100vh + var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
-.container {
-  display: flex;
-  width: 80%;
-  margin: auto;
+.logo {
+
+  width: 8%;
+
 }
 
 .header {
+
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
+  width: 97%;
+  background-color: rgba(0, 0, 0, 0.1);
 
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
+  color: white;
 
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+
+  padding-right: 5%;
+  padding-left: 1%;
+
+  position: fixed;
+
+}
+
+.headerContainer {
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+}
+
+.headerContainer .navbar {
+
+  width: 60%;
+
   list-style: none;
-  color: #e3b062;
+  display: flex;
+  justify-content: space-around;
+
 }
 
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
+header a {
 
-.header h1 {
-  margin: 0;
+  text-decoration: none;
+  color: white;
+
 }
 
 /* BANNER */
@@ -65,25 +73,36 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)), url('https://gamehall.com.br/wp-content/uploads/2022/09/kiriko-overwatch-2.jpg');
+  background-size: 100%;
+
+
 }
 
-.banner .container {
+.banner .bannerContainer {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+
+  padding-left: 5%;
   height: 100%;
 }
 
-.banner .container p {
+.banner .bannerContainer p {
+
+  font-size: 20pt;
   width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
+
 }
 
-.banner .container span {
-  font-weight: 800;
+.spanGalerawatch {
+
+  color: #EA0202;
+  font-weight: 600;
+
 }
 
 /* MISSÃO VISÃO VALORES */
@@ -237,7 +256,7 @@ body {
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -254,7 +273,7 @@ body {
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -310,7 +329,7 @@ input {
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
+  overflow: scroll;
   height: var(--tamanho-simulador);
 }
 
@@ -354,9 +373,23 @@ input {
 }
 
 @keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
+  0% {
+    transform: rotate(25deg)
+  }
+
+  25% {
+    transform: rotate(-25deg)
+  }
+
+  50% {
+    transform: rotate(25deg)
+  }
+
+  75% {
+    transform: rotate(-25deg)
+  }
+
+  100% {
+    transform: rotate(25deg)
+  }
 }

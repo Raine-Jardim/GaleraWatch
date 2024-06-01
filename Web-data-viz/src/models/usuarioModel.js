@@ -1,9 +1,55 @@
 var database = require("../database/config")
 
-function autenticar(email, senha) {
+function autenticarCadastroFuncao(email, senha) {
+
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT id, nome, email FROM usuarios WHERE email = '${email}' AND senha = '${senha}';
+    select 
+       id,
+       nome,
+       email,
+       senha
+from Galerawatch.usuarios
+WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
+function autenticarLogin(email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucaoSql = `
+    select 
+       us.id,
+       us.nome,
+       us.email,
+       us.senha,
+	   per.funcao,
+       per.personagem1,
+       per.personagem2,
+       per.personagem3,
+       per.mensagem
+from Galerawatch.usuarios us
+inner join Galerawatch.perfil as per on per.fkUsuario = us.id
+WHERE us.email = '${email}' AND us.senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listarUsuarios() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
+    var instrucaoSql = `
+    select 
+       us.nome,
+	   per.funcao,
+       per.personagem1,
+       per.personagem2,
+       per.personagem3,
+       per.mensagem
+from Galerawatch.usuarios us
+inner join Galerawatch.perfil as per on per.fkUsuario = us.id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -12,7 +58,7 @@ function autenticar(email, senha) {
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
@@ -23,6 +69,8 @@ function cadastrar(nome, email, senha) {
 }
 
 module.exports = {
-    autenticar,
+    autenticarCadastroFuncao,
+    autenticarLogin,
+    listarUsuarios,
     cadastrar
 };
