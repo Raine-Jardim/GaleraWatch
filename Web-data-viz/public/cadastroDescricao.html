@@ -6,14 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="css/styleCadastroDescricao.css">
+
     <script src="./js/sessao.js"></script>
 </head>
 
 <body>
 
-    Descrição:
-    <input type="text" id="input_descricao">
-    <button onclick="validarDescricao()">Finalizar</button>
+    <div class="titulo">
+        <h2>Quase lá!</h2>
+        <div class="containerProgresso">
+            <div class="containerBarra">
+                <p>Progresso: <span>90%</span></p>
+                <div class="cinza">
+                    <div class="branco">
+                        <div class="verde">
+                            <img src="../../Imagens/setaDupla.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="../../Imagens/LogoGaleraWatch.png" alt="">
+        </div>
+        <div class="legendaProgresso">
+            <div class="containerProgresso2">
+                Função
+                <div class="bolinha">
+                    <img src="../../Imagens/seta.png" alt="">
+                </div>
+            </div>
+
+            <div class="containerProgresso2">
+                Personagens
+                <div class="bolinha">
+                    <img src="../../Imagens/seta.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="text" id="input_descricao" placeholder="Escreva uma mensagem para as pessoas saberem que tipo de pessoa você é!">
+
+    <button class="botao" onclick="validarDescricao()">FINALIZAR</button>
 
 </body>
 

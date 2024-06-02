@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: "Karla", sans-serif;
+    font-size: 17pt;
+
+    background-image: url('https://i.pinimg.com/originals/79/fa/87/79fa8710bf6cdab27f634761fe028ecc.jpg');
+    background-size: 100%;
+    background-position: 100% 60%;
+
+}
+
+.titulo {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    border: 2px solid #B50000;
+    border-radius: 10px;
+
+    width: 70%;
+    padding: 1%;
+    padding-right: 2%;
+    padding-left: 2%;
+    
+    color: black;
+    font-weight: bold;
+
+}
+
+.titulo h2 {
+
+    margin: 0;
+    text-align: center;
+    color: #B50000;
+
+}
+
+.titulo p {
+
+    margin: 0;
+    margin-bottom: 0.5%;
+    margin-left: 1.5%;
+
+}
+
+.titulo span {
+
+    color: #B50000;
+
+}
+
+.containerProgresso {
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+}
+
+.containerProgresso img {
+    
+    width: 8%;
+}
+
+.containerBarra {
+
+    width: 100%;
+
+}
+
+.cinza {
+
+    display: flex;
+    align-items: center;
+
+    background-color: #2E3A50;
+    border: 3px solid #0A1930;
+    border-radius: 100px;
+
+    width: 98%;
+    height: 6vh;
+
+}
+
+.branco {
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 100px;
+
+    width: 90%;
+    height: 6vh;
+
+}
+
+.verde {
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    background-color: #00C903;
+    border-radius: 100px;
+    border: 2px solid white;
+
+    width: 15%;
+    height: 5.4vh;
+
+}
+
+.verde img {
+
+    width: 25%;
+    margin-right: 5%;
+
+}
+
+.legendaProgresso {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    padding-top: 1%;
+    width: 50%;
+
+    font-size: 12pt;
+
+}
+
+.containerProgresso2 {
+
+    display: flex;
+
+}
+
+.bolinha {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #00C903;
+    border-radius: 100%;
+
+    width: 30px;
+    height: 25px;
+    margin-left: 5%;
+
+}
+
+.legendaProgresso img {
+
+    width: 37%;
+
+}
+
+#input_descricao {
+
+    margin-top: 1%;
+
+    width: 40%;
+    height: 40%;
+    
+    border-radius: 10px;
+    border: 2px solid black;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+
+}
+
+.botao {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    background-color: #EA0202;
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 18pt;
+    text-decoration: none;
+
+    width: 12rem;
+    height: 3.5rem;
+
+    margin-top: 1%;
+
+    border-radius: 10px;
+    border: none;
+
+}
