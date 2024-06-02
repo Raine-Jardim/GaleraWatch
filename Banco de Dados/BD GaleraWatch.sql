@@ -47,3 +47,14 @@ select us.nome,
 from Galerawatch.usuarios us
 inner join Galerawatch.perfil as per on per.fkUsuario = us.id
 WHERE us.email = 'parana@email.com' AND us.senha = '12345';
+
+-- -------------------------- --
+
+select personagem1,
+	   personagem2,
+       personagem3
+from Galerawatch.perfil;
+
+-- ---
+
+select funcao from Galerawatch.perfil;
