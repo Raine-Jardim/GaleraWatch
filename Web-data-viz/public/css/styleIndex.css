@@ -182,6 +182,12 @@ header a {
 
 }
 
+.containerSobre div p {
+
+  width: 35%;
+
+}
+
 .primeiroStep {
 
   display: flex;
@@ -207,7 +213,6 @@ header a {
 
 .segundoStep p {
 
-  width: 35%;
   padding-left: 10%;
 
 }
@@ -226,30 +231,255 @@ header a {
 }
 
 .terceiroStep div {
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 45%;
   padding-bottom: 10%;
 
 }
 
+.terceiroStep div p {
 
-/* FOOTER */
+  width: 89%;
 
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
 }
 
-.footer .container {
-  justify-content: center;
+/* DESENVOLVEDORA */
+
+.containerDesenvolvedora {
+
+  display: flex;
+  align-items: center;
+
+  background-image: linear-gradient(rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.65)), url('../../../Imagens/Fundos/Paraiso1.png');
+  background-size: 100%;
+  background-position: 50%;
+
+  width: 99.5%;
+  height: 60vh;
+
+  border: 5px solid #EA0202;
+  border-left: none;
+  border-top-right-radius: 10% 30%;
+  border-bottom-right-radius: 10% 30%;
+
+}
+
+.containerDesenvolvedora img {
+
+  border-radius: 100%;
+  height: 100%;
+
+  margin-left: 5%;
+
+}
+
+.containerInformacoes {
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  background-color: #B50000;
+  width: 50%;
+  height: 99%;
+
+  border: 5px solid #EA0202;
+  border-left: none;
+  border-top-right-radius: 30% 55%;
+  border-bottom-right-radius: 30% 55%;
+
+}
+
+.topicosSobre {
+
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+  font-size: 17pt;
+  text-align: center;
+
+}
+
+.topicosSobre h3 {
+
+  margin: 0;
+  margin-bottom: 1%;
+
+}
+
+.topicosSobre p {
+
+  margin-top: 7%;
+  margin-bottom: 7%;
+
+}
+
+.topicosSobre ion-icon {
+
+  margin: 5%;
+  font-size: 35pt;
+  color: white;
+
+}
+
+.textinhoSobre {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 50%;
+  height: 100%;
+  padding-right: 3%;
+
+  font-size: 17pt;
+  font-weight: bold;
   text-align: center;
 }
 
-.footer .container .version {
-  font-size: 12px;
+.textinhoSobre h1 {
+
+  color: #EA0202;
+  margin: 0;
+  margin-top: 1%;
+
+}
+
+.textinhoSobre p {
+
+  width: 80%;
+
+}
+
+/*  */
+
+.containerOrigemGalerawatch {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 17pt;
+
+}
+
+.linhaVertical {
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #EA0202;
+  width: min-content;
+  color: #EA0202;
+  align-self: center;
+
+}
+
+.textinhoOrigem {
+
+  background-color: #EAEAEA;
+  border: 5px solid #EA0202;
+  border-radius: 15px;
+
+  width: 45%;
+  padding: 2%;
+  padding-right: 5%;
+  padding-left: 5%;
+
+  text-align: center;
+
+}
+
+.textinhoOrigem span {
+
+  background-color: #EABCBC;
+
+  padding-right: 1.5%;
+  padding-left: 1.5%;
+  padding-bottom: 0.5%;
+
+  border-radius: 5px;
+}
+
+.linha2 {
+
+  border-bottom-left-radius: 20% 20%;
+  border-bottom-right-radius: 20% 20%;
+
+}
+
+.containerOrigemGalerawatch img {
+
+  width: 15%;
+
+}
+
+.paragrafoSemMargem {
+
+  margin: 0;
+
+}
+
+.containerOds {
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 5%;
+  padding-bottom: 5%;
+
+  font-size: 18pt;
+
+}
+
+.backgroundOds {
+
+  display: flex;
+
+  width: 85%;
+  background-color: #F1FFF0;
+  border: 5px solid #4CA146;
+
+}
+
+.containerOds img {
+
+  width: 20%;
+  height: 100%;
+
+}
+
+.textoOds {
+
+  padding: 2%;
+
+}
+
+/* FOOTER */
+
+footer {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #B50000;
+  padding: 1%;
+
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+footer p {
+
+  width: 20%;
+
 }
