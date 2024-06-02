@@ -125,12 +125,16 @@ body {
 
 }
 
-.titulo {
+.indiceTabela {
+
+    display: flex;
+    justify-content: space-evenly;
 
     background-color: #B50000;
     
     color: white;
     text-align: center;
+    font-weight: bold;
 
     width: 100%;
     padding-top: 1%;
@@ -138,30 +142,14 @@ body {
 
 }
 
-.titulo h2 {
+#div_mostrarPerfis {
 
-    margin: 0;
-
-}
-
-.titulo p {
-
-    margin: 0;
+    width: 100%;
 
 }
 
-.containerConteudo img {
+.nome_usuario {
 
-    width: 45%;
-    margin-top: 3%;
-
-    border-radius: 300px;
-
-}
-
-.containerConteudo a {
-
-    color: #B50000;
-    font-size: 50pt;
+    font-weight: bold;
 
 }
