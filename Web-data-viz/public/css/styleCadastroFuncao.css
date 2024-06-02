@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    font-family: "Karla", sans-serif;
+    font-size: 17pt;
+
+    /* background-color: white; */
+    background-image: url('https://bnetcmsus-a.akamaihd.net/cms/gallery/4QMO7C0F0MFB1649353626696.jpg');
+    background-size: 100%;
+    background-position: 100% 40%;
+
+}
+
+.titulo {
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    color: white;
+
+}
+
+.titulo h1 {
+
+    background-color: #b50000d8;
+    border: 2px solid white;
+    border-radius: 10px;
+
+    width: 40%;
+    padding: 0.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+.containerFuncoes {
+
+    padding: 5%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cardFuncao {
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 17%;
+
+    background-color: white;
+    border: 3px solid #B50000;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #B50000;
+    font-weight: bold;
+
+}
+
+img {
+
+    width: 50%;
+    margin: 10%;
+
+}
+
+/* .cardFuncao input[type='checkbox'] {
+
+    -webkit-appearance: none;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 2px;
+    border: 1px solid black;
+    
+    margin: 5%;
+
+}
+
+.cardFuncao input:checked {
+
+    border: 1px solid #B50000;
+    background-color: #B50000;
+
+} */
+
+.containerBotao {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.botao {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    background-color: #EA0202;
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 18pt;
+    text-decoration: none;
+
+    width: 12rem;
+    height: 3.5rem;
+
+    margin-top: 5%;
+
+    border-radius: 10px;
+    border: none;
+
+}

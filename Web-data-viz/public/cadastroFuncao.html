@@ -6,23 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="css/styleCadastroFuncao.css">
     <script src="js/sessao.js"></script>
 </head>
 
 <body onload="buscarDados()">
-    Tanque
-    <input type="checkbox" id="check_Tanque" onclick="contadorChecks()">
-    <br>
-    Dano
-    <input type="checkbox" id="check_Dano" onclick="contadorChecks()">
-    <br>
-    Suporte
-    <input type="checkbox" id="check_Suporte" onclick="contadorChecks()">
-    <br>
-    Todos
-    <input type="checkbox" id="check_Todos" onclick="contadorChecks()">
 
-    <button onclick="guardarRoles()">Continuar</button>
+    <div class="titulo">
+        <h1>SELECIONE SUA FUNÇÃO</h1>
+    </div>
+
+    <div class="containerFuncoes">
+        <div class="cardFuncao">
+            <img src="../../Imagens/Tank_icon.png" alt="">
+            TANQUE
+            <input type="checkbox" id="check_Tanque" class="checkmark" onclick="contadorChecks()">
+        </div>
+        <div class="cardFuncao">
+            <img src="../../Imagens/Damage_icon.png" alt="">
+            DANO
+            <input type="checkbox" id="check_Dano" onclick="contadorChecks()">
+        </div>
+        <div class="cardFuncao">
+            <img src="../../Imagens/Support_icon.png" alt="">
+            SUPORTE
+            <input type="checkbox" id="check_Suporte" onclick="contadorChecks()">
+        </div>
+        <div class="cardFuncao">
+            <img src="../../Imagens/All_icon.png" alt="">
+            TODOS
+            <input type="checkbox" id="check_Todos" onclick="contadorChecks()">
+        </div>
+    </div>
+
+    <div class="containerBotao">
+        <button class="botao" onclick="guardarRoles()">CONTINUAR</button>
+    </div>
 
 </body>
 
