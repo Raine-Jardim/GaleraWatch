@@ -6,28 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="../public/css/styleGaleraWatch.css">
+
     <script src="./js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao(), listarTodosUsuarios()">
+<body>
 
-    <div id="div_perfilUsuario">
-        Nome: <span id="span_nomeUsuario"></span>
-        <br>
-        Funcões: <span id="span_funcoes"></span>
-        <br>
-        Personagens: <span id="span_personagens"></span>
-        <br>
-        Mensagem: <span id="span_mensagem"></span>
+    <div class="header">
 
-    </div>
+        <div class="informacoesUsuario">
 
-    <div id="container_mostrarPerfis">
+            <div id="div_perfilUsuario">
+                <div class="iconePersonagem">
 
-        <div id="div_mostrarPerfis">
-            <span id="nome_usuario"></span> - <span id="personagens"> </span> - <span id="funcoes"></span>
+                </div>
+                <div>
+                    Apelido: <span id="span_nomeUsuario"></span>
+                    <br>
+                    Funcões: <span id="span_funcoes"></span>
+                    <br>
+                    Personagens: <span id="span_personagens"></span>
+                    <br>
+                </div>
+            </div>
+            <span id="span_mensagem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptatibus iure
+                consequuntur abcdefga</span>
+        </div>
+
+        <div class="menu">
+
+            <a href="">PÁGINA INICIAL</a>
+            <a href="">USUÁRIOS</a>
+            <a href="">DASHBOARD</a>
+            <a href="">SAIR</a>
+
         </div>
     </div>
+
+    <div class="containerConteudo">
+
+        <div class="titulo">
+            <h2>Bem-Vindo(a)!</h2>
+            <p>Que tal juntar algumas pessoas para jogar com você hoje?</p>
+        </div>
+
+        <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/02/overwatch-baby-winston.jpg"
+            alt="">
+
+        <p>Junte-se ao nosso Discord para conhecer ainda mais pessoas!</p>
+
+        <a href=""><ion-icon name="logo-discord"></ion-icon></a>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 
@@ -40,55 +74,10 @@
     listaPersonagensUsuario.push(sessionStorage.PERSONAGEM1_USUARIO);
     listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM2_USUARIO);
     listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM3_USUARIO);
-    
+
     span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
     span_funcoes.innerHTML = sessionStorage.FUNCAO_USUARIO;
     span_personagens.innerHTML = listaPersonagensUsuario;
     span_mensagem.innerHTML = sessionStorage.MENSAGEM_USUARIO;
-    
-
-    // function listarTodosUsuarios() {
-
-    //     fetch("/usuarios/listarUsuarios", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     }).then(function (resposta) {
-    //         console.log("ESTOU NO THEN DO entrar()!")
-
-    //         if (resposta.ok) {
-    //             console.log(resposta);
-
-    //             resposta.json().then(json => {
-    //                 console.log(json);
-    //                 console.log(JSON.stringify(json));
-    //                 sessionStorage.EMAIL_USUARIO = json.email;
-    //                 sessionStorage.NOME_USUARIO = json.nome;
-    //                 sessionStorage.ID_USUARIO = json.idUsuario;
-    //                 sessionStorage.FUNCAO_USUARIO = json.funcao;
-    //                 sessionStorage.PERSONAGEM1_USUARIO = json.personagem1;
-    //                 sessionStorage.PERSONAGEM2_USUARIO = json.personagem2;
-    //                 sessionStorage.PERSONAGEM3_USUARIO = json.personagem3;
-    //                 sessionStorage.MENSAGEM_USUARIO = json.mensagem;
-
-    //             });
-
-    //         } else {
-
-    //             console.log("Houve um erro ao tentar realizar o login!");
-
-    //             resposta.text().then(texto => {
-    //                 console.error(texto);
-    //                 finalizarAguardar(texto);
-    //             });
-    //         }
-
-    //     }).catch(function (erro) {
-    //         console.log(erro);
-    //     })
-
-    //     return false;
-    // }
 
 </script>

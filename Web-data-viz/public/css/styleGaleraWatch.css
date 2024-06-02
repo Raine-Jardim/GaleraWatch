@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "Karla", sans-serif;
+    font-size: 16pt;
+
+    /* background-color: white; */
+    background-image: url('../../../Imagens/Fundos/Rio_de_Janeiro.png');
+    background-size: 100%;
+
+}
+
+/* HEADER */
+
+.header {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #ffecec81;
+    border-bottom: 2px solid #EA0202;
+
+    height: 11rem;
+    width: 100%;
+    
+}
+
+.informacoesUsuario {
+    
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1.5%;
+    padding-bottom: 1%;
+    padding-top: 0%;
+
+}
+
+.iconePersonagem {
+    
+    background-color: white;
+    border: 3px solid #EA0202;
+    border-radius: 100%;
+
+    margin-right: 5%;
+
+    width: 117px;
+    height: 117px;
+
+}
+
+#div_perfilUsuario {
+
+    display: flex;
+    align-items: center;
+
+    width: 50%;
+
+    color: #b50000;
+    font-weight: bold;
+
+}
+
+#div_perfilUsuario span {
+
+    color: black;
+    font-weight: 400;
+
+}
+
+#span_mensagem {
+
+    display: flex;
+    align-items: center;
+
+    background-color: #FFECEC;
+    border: 3px solid #EA0202;
+    border-radius: 10px;
+
+    width: 45%;
+    height: 80%;
+    padding-right: 1%;
+    padding-left: 1%;
+
+}
+
+.menu {
+
+    display: flex;
+    justify-content: space-evenly;
+
+    font-weight: bold;
+
+}
+
+.menu a {
+
+    color: #b50000;
+    text-decoration: none;
+
+}
+
+/* CONTEÚDO */
+
+.containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    height: 85vh;
+    background-color: white;
+
+}
+
+.titulo {
+
+    background-color: #B50000;
+    
+    color: white;
+    text-align: center;
+
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+
+.titulo h2 {
+
+    margin: 0;
+
+}
+
+.titulo p {
+
+    margin: 0;
+
+}
+
+.containerConteudo img {
+
+    width: 45%;
+    margin-top: 3%;
+
+    border-radius: 300px;
+
+}
+
+.containerConteudo a {
+
+    color: #B50000;
+    font-size: 50pt;
+
+}
