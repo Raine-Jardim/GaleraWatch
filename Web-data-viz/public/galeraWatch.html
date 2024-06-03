@@ -67,9 +67,8 @@
                     <div class="personagem"></div> -->
                 </td>
                 <td class="colunaFuncao campoFuncao">
-                    ${dados.funcao}
-                    <!-- <img src="../assets/Damage_icon.png" class="icone">
-                    <img src="../assets/Support_icon.png" class="icone"> -->
+                    <!-- ${dados.funcao} -->
+
                 </td>
                 <td class="colunaMensagem campoMensagem">
                     <span>${dados.mensagem}</span>
@@ -132,29 +131,29 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var dados = resposta[i];
 
-                        
-                    // ${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}
+                        const listaFuncoes = dados.funcao.split(",", 2);
 
                         div_mostrarPerfis.innerHTML += `
-                        <tr>
-                <td class="colunaNome dadosNome">
-                    <div class="personagem" id='personagem1_perfilUsuario${i}'></div>
-                    <span class="nome_usuario">${dados.nome}</span>
-                </td>
-                <td class="colunaPersonagem">
-                    <div class="personagem" id='personagem1_usuario${i}'></div>
-                    <div class="personagem" id='personagem2_usuario${i}'></div>
-                    <div class="personagem" id='personagem3_usuario${i}'></div>
-                </td>
-                <td class="colunaFuncao campoFuncao">
-                    ${dados.funcao}
-                    <!-- <img src="../assets/Damage_icon.png" class="icone">
-                    <img src="../assets/Support_icon.png" class="icone"> -->
-                </td>
-                <td class="colunaMensagem campoMensagem">
-                    <span>${dados.mensagem}</span>
-                </td>
-            </tr>`
+                                            <tr>
+                                                <td class="colunaNome dadosNome">
+                                                    <div class="personagem" id='personagem1_perfilUsuario${i}'></div>
+                                                    <span class="nome_usuario">${dados.nome}</span>
+                                                </td>
+                                                <td class="colunaPersonagem">
+                                                    <div class="personagem" id='personagem1_usuario${i}'></div>
+                                                    <div class="personagem" id='personagem2_usuario${i}'></div>
+                                                    <div class="personagem" id='personagem3_usuario${i}'></div>
+                                                </td>
+                                                <td class="colunaFuncao campoFuncao">
+                                                    <img src="../assets/Tank_icon.png" class="icone" id="funcaoTanqueUsuario${[i]}">
+                    <img src="../assets/Damage_icon.png" class="icone" id="funcaoDanoUsuario${[i]}">
+                    <img src="../assets/Support_icon.png" class="icone" id="funcaoSuporteUsuario${[i]}">
+                    <img src="../assets/All_icon.png" class="icone" id="funcaoTodosUsuario${[i]}">
+                                                        </td>
+                                                        <td class="colunaMensagem campoMensagem">
+                                                            <span>${dados.mensagem}</span>
+                                                        </td>
+                                                    </tr>`
 
                         for (let contador = 0; contador < listaNomesPersonagens.length; contador++) {
 
@@ -184,6 +183,39 @@
                             if (listaNomesPersonagens[contador] == dados.personagem3) {
 
                                 idPersonagem3Usuario.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+                            }
+
+                        }
+
+                        for (let contadorFuncoes = 0; contadorFuncoes < listaFuncoes.length; contadorFuncoes++) {
+
+                            let idFuncaoTanque = document.getElementById(`funcaoTanqueUsuario${[i]}`);
+                            let idFuncaoDano = document.getElementById(`funcaoDanoUsuario${[i]}`);
+                            let idFuncaoSuporte = document.getElementById(`funcaoSuporteUsuario${[i]}`);
+                            let idFuncaoTodos = document.getElementById(`funcaoTodosUsuario${[i]}`);
+
+                            if (listaFuncoes[contadorFuncoes] == 'Tanque') {
+
+                                idFuncaoTanque.style.display = 'block';
+
+                            }
+
+                            if (listaFuncoes[contadorFuncoes] == 'Dano') {
+
+                                idFuncaoDano.style.display = 'block';
+
+                            }
+
+                            if (listaFuncoes[contadorFuncoes] == 'Suporte') {
+
+                                idFuncaoSuporte.style.display = 'block';
+
+                            }
+
+                            if (listaFuncoes[contadorFuncoes] == 'Todos') {
+
+                                idFuncaoTodos.style.display = 'block';
 
                             }
 
