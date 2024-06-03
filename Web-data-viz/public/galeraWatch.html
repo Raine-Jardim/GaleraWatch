@@ -129,21 +129,22 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                    // div_mostrarPerfis.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var dados = resposta[i];
+
+                        
+                    // ${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}
 
                         div_mostrarPerfis.innerHTML += `
                         <tr>
                 <td class="colunaNome dadosNome">
-                    <div class="personagem"></div>
+                    <div class="personagem" id='personagem1_perfilUsuario${i}'></div>
                     <span class="nome_usuario">${dados.nome}</span>
                 </td>
                 <td class="colunaPersonagem">
-                    ${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}
-                    <!-- <div class="personagem"></div>
-                    <div class="personagem"></div>
-                    <div class="personagem"></div> -->
+                    <div class="personagem" id='personagem1_usuario${i}'></div>
+                    <div class="personagem" id='personagem2_usuario${i}'></div>
+                    <div class="personagem" id='personagem3_usuario${i}'></div>
                 </td>
                 <td class="colunaFuncao campoFuncao">
                     ${dados.funcao}
@@ -154,6 +155,39 @@
                     <span>${dados.mensagem}</span>
                 </td>
             </tr>`
+
+                        for (let contador = 0; contador < listaNomesPersonagens.length; contador++) {
+
+                            let idPersonagem1PerfilUsuario = document.getElementById(`personagem1_perfilUsuario${i}`);
+                            let idPersonagem1Usuario = document.getElementById(`personagem1_usuario${i}`);
+                            let idPersonagem2Usuario = document.getElementById(`personagem2_usuario${i}`);
+                            let idPersonagem3Usuario = document.getElementById(`personagem3_usuario${i}`);
+
+                            if (listaNomesPersonagens[contador] == dados.personagem1) {
+
+                                idPersonagem1PerfilUsuario.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+                            }
+
+                            if (listaNomesPersonagens[contador] == dados.personagem1) {
+
+                                idPersonagem1Usuario.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+                            }
+
+                            if (listaNomesPersonagens[contador] == dados.personagem2) {
+
+                                idPersonagem2Usuario.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+                            }
+
+                            if (listaNomesPersonagens[contador] == dados.personagem3) {
+
+                                idPersonagem3Usuario.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+                            }
+
+                        }
 
                     }
 
