@@ -31,11 +31,11 @@ body {
 
     height: 11rem;
     width: 100%;
-    
+
 }
 
 .informacoesUsuario {
-    
+
     display: flex;
     justify-content: space-between;
 
@@ -46,7 +46,7 @@ body {
 }
 
 #iconePersonagem {
-    
+
     background-color: white;
     border: 3px solid #EA0202;
     border-radius: 100%;
@@ -125,31 +125,122 @@ body {
 
 }
 
-.indiceTabela {
+.containerConteudo table {
+
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+tr {
 
     display: flex;
-    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+th {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-color: #B50000;
-    
+    border: 1px solid #B50000;
+
     color: white;
     text-align: center;
     font-weight: bold;
 
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+
     width: 100%;
-    padding-top: 1%;
-    padding-bottom: 1%;
 
 }
 
-#div_mostrarPerfis {
+td {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #B50000;
 
     width: 100%;
+
+    padding: 0.5%;
+
+}
+
+.colunaNome {
+
+    width: 70%;
+
+}
+
+.colunaPersonagem {
+
+    width: 80%;
+
+}
+
+.colunaFuncao {
+
+    width: 50%;
+
+}
+
+.campoFuncao {
+
+    justify-content: space-evenly;
+
+}
+
+.colunaMensagem {
+
+    width: 140%;
+
+}
+
+.colunaMensagem span {
+
+    font-size: 15pt;
+
+}
+
+.campoMensagem {
+
+    background-color: #FFECEC;
+
+}
+
+/*  */
+
+.personagem {
+
+    background-color: white;
+    border: 2px solid #EA0202;
+    border-radius: 100%;
+
+    margin-right: 5%;
+
+    width: 50px;
+    height: 50px;
+
+    background-position: 100%;
+    background-size: 100%;
 
 }
 
 .nome_usuario {
 
     font-weight: bold;
+
+}
+
+.icone {
+
+    width: 30%;
 
 }
