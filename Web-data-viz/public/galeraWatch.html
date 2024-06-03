@@ -56,22 +56,23 @@
             </tr>
 
             <tr>
-                <td class="colunaNome">
+                <td class="colunaNome dadosNome">
                     <div class="personagem"></div>
                     <span class="nome_usuario">${dados.nome}</span>
                 </td>
                 <td class="colunaPersonagem">
+                    ${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}
+                    <!-- <div class="personagem"></div>
                     <div class="personagem"></div>
-                    <div class="personagem"></div>
-                    <div class="personagem"></div>
+                    <div class="personagem"></div> -->
                 </td>
                 <td class="colunaFuncao campoFuncao">
-                    <img src="../assets/Damage_icon.png" class="icone">
-                    <img src="../assets/Support_icon.png" class="icone">
+                    ${dados.funcao}
+                    <!-- <img src="../assets/Damage_icon.png" class="icone">
+                    <img src="../assets/Support_icon.png" class="icone"> -->
                 </td>
                 <td class="colunaMensagem campoMensagem">
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
-                        voluptatibus iure consequuntur abcdefga</span>
+                    <span>${dados.mensagem}</span>
                 </td>
             </tr>
 
@@ -134,20 +135,22 @@
 
                         div_mostrarPerfis.innerHTML += `
                         <tr>
-                <td class="colunaNome">
-                    <!-- <div class="personagem"></div> -->
+                <td class="colunaNome dadosNome">
+                    <div class="personagem"></div>
                     <span class="nome_usuario">${dados.nome}</span>
                 </td>
-                <td>
+                <td class="colunaPersonagem">
                     ${dados.personagem1}, ${dados.personagem2}, ${dados.personagem3}
                     <!-- <div class="personagem"></div>
                     <div class="personagem"></div>
                     <div class="personagem"></div> -->
                 </td>
-                <td>
+                <td class="colunaFuncao campoFuncao">
                     ${dados.funcao}
+                    <!-- <img src="../assets/Damage_icon.png" class="icone">
+                    <img src="../assets/Support_icon.png" class="icone"> -->
                 </td>
-                <td class="colunaMensagem">
+                <td class="colunaMensagem campoMensagem">
                     <span>${dados.mensagem}</span>
                 </td>
             </tr>`
