@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+
+  font-family: "Karla", sans-serif;
+  font-size: 15pt;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url('https://images.blz-contentstack.com/v3/assets/blt2477dcaf4ebd440c/blta5830262a146aab0/638810315148880e83ab70d3/sombra-00.jpg');
+  background-size: 100%;
+  background-position: 100% 100%;
+
+}
+
+.login {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.40);
+  backdrop-filter: blur(1.5px);
+  border-radius: 20px;
+
+  width: 30%;
+  height: 70%;
+
+  color: white;
+
+}
+
+.login h2 {
+
+  color: #EA0202;
+
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 45pt;
+
+}
+
+.formulario {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  margin: 2%;
+
+  width: 65%;
+  height: 40%;
+
+}
+
+.containerInput {
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 40%;
+
+}
+
+.login input {
+
+  width: 100%;
+  height: 80%;
+
+  padding-left: 3%;
+  margin-right: 3%;
+
+  font-size: 13pt;
+
+  border: 1px solid black;
+  border-radius: 8.5px;
+
+}
+
+.botao {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  background-color: #EA0202;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 18pt;
+  text-decoration: none;
+
+  width: 8rem;
+  height: 3rem;
+
+  margin-top: 10%;
+
+  border: none;
+  border-radius: 10px;
+
+}
