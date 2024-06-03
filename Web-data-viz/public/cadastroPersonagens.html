@@ -2,101 +2,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="./css/styleCadastroPersonagem.css">
+
 </head>
-
-<style>
-    body {
-
-        padding: 0;
-        margin: 0;
-
-        background-color: rgb(255, 210, 210);
-
-    }
-
-    #containerPersonagens {
-
-        width: 90vw;
-        height: 90vh;
-        display: flex;
-        justify-content: space-evenly;
-
-    }
-
-    #containerTanque {
-
-        display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
-        gap: 2% 2%;
-
-        width: 25%;
-        background-color: brown;
-        padding: 1%;
-
-    }
-
-    #containerDano {
-
-        display: grid;
-        grid-template-columns: 19% 19% 19% 19% 19%;
-        gap: 2% 2%;
-
-        width: 40%;
-        background-color: brown;
-        padding: 1%;
-
-    }
-
-    #containerSuporte {
-
-        display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
-        gap: 2% 2%;
-
-        width: 25%;
-        background-color: brown;
-        padding: 1%;
-
-    }
-
-    .cardPersonagem {
-
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .cardPersonagem img {
-
-        background-size: auto;
-
-    }
-
-    .cardPersonagem input {
-
-        margin: 0;
-
-    }
-
-    .cardPersonagem span {
-
-        width: 100%;
-        height: 20%;
-        text-align: center;
-        background-color: white;
-
-    }
-
-    .check {
-
-        width: 100%;
-        height: 100%;
-        opacity: 50%;
-    }
-</style>
 
 <body onload="carregarCardsPersonagens()">
 

@@ -38,10 +38,6 @@
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
 
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
-
                 <div id="div_erros_login"></div>
             </div>
         </div>
@@ -55,7 +51,6 @@
 
 
     function entrar() {
-        aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -63,7 +58,6 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
         }
         else {
@@ -100,9 +94,7 @@
                     sessionStorage.PERSONAGEM3_USUARIO = json.personagem3;
                     sessionStorage.MENSAGEM_USUARIO = json.mensagem;
 
-                    setTimeout(function () {
-                        window.location = "galeraWatch.html";
-                    }, 1000); // apenas para exibir o loading
+                    window.location = "galeraWatch.html";
 
                 });
 
@@ -112,7 +104,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
