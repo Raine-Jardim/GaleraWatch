@@ -8,20 +8,21 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="./css/styleCadastroPersonagem.css">
+    <link rel="icon" href="./assets/icon/coracaovGalerawatch.png" />
 
 </head>
 
 <body onload="carregarCardsPersonagens()">
 
-    <div>
-        <div>
-            <img src="https://cdn-icons-png.flaticon.com/512/686/686317.png" alt="" width="5%">
-            Todos
+    <div class="containerBotao">
+        <div class="topBotao">
+            <img src="../assets/Damage_icon.png" alt="" class="icone">
+            <span>DANOS</span>
         </div>
-        <div>
-            <button>Voltar</button>
-        </div>
+            <button onclick="salvarCadastrarPersonagens()" class="botao">CONTINUAR</button>
     </div>
+
+    <span class="titulo">SELECIONE 3 PERSONAGENS</span>
 
     <div id="containerPersonagens">
 
@@ -38,8 +39,6 @@
         </div>
 
     </div>
-
-    <button onclick="salvarCadastrarPersonagens()">Pronto</button>
 
 </body>
 
@@ -214,8 +213,6 @@
 
         }
 
-
-
     }
 
     function salvarCadastrarPersonagens() {
@@ -283,9 +280,6 @@
 
     function guardarBanco() {
 
-        // let idUsuario = sessionStorage.ID_USUARIO;
-
-        // v nome do arquivo, depois da função que quer chamar
         fetch(`/personagens/cadastrarPersonagens`, {
             method: "PUT",
             headers: {
@@ -317,124 +311,5 @@
 
         return false;
     }
-
-    // function verificarCheckApenasTanque() {
-
-    //     let qtdPersonagensChecked = 0;
-
-    //     for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
-
-    //         const nomePersonagem = listaNomesPersonagensTanqueParaID[contadorPosicao];
-    //         const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
-
-    //         if (checkPersonagem.checked) {
-
-    //             qtdPersonagensChecked++;
-    //             // console.log(`Quantidade de Tanque: ${qtdPersonagensChecked}`);
-    //             // console.log(`Personagem checado: ${listaNomesPersonagensTanque[contadorPosicao]}`);
-
-    //         }
-
-    //         if (qtdPersonagensChecked == 3) {
-
-    //             for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensTanque.length; contadorPosicao2++) {
-    //                 const nomePersonagem2 = listaNomesPersonagensTanqueParaID[contadorPosicao2];
-    //                 const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-
-    //                 if (!checkPersonagem2.checked) {
-
-    //                     checkPersonagem2.disabled = true;
-
-    //                 }
-    //             }
-
-    //         } else {
-
-    //             checkPersonagem.disabled = false;
-
-    //         }
-
-    //     }
-
-    // }
-
-    // function verificarCheckApenasDano() {
-
-    //     let qtdPersonagensChecked = 0;
-
-    //     for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
-
-    //         const nomePersonagem = listaNomesPersonagensDanoParaID[contadorPosicao];
-    //         const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
-
-    //         if (checkPersonagem.checked) {
-
-    //             qtdPersonagensChecked++;
-    //             // console.log(`Quantidade de Dano: ${qtdPersonagensChecked}`);
-    //             // console.log(`Personagem checado: ${listaNomesPersonagensDano[contadorPosicao]}`);
-
-    //         }
-
-    //         if (qtdPersonagensChecked == 3) {
-
-    //             for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensDano.length; contadorPosicao2++) {
-    //                 const nomePersonagem2 = listaNomesPersonagensDanoParaID[contadorPosicao2];
-    //                 const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-
-    //                 if (!checkPersonagem2.checked) {
-
-    //                     checkPersonagem2.disabled = true;
-
-    //                 }
-    //             }
-
-    //         } else {
-
-    //             checkPersonagem.disabled = false;
-
-    //         }
-
-    //     }
-
-    // }
-
-    // function verificarCheckApenasSuporte() {
-
-    //     let qtdPersonagensChecked = 0;
-
-    //     for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
-
-    //         const nomePersonagem = listaNomesPersonagensSuporteParaID[contadorPosicao];
-    //         const checkPersonagem = document.getElementById(`check_${nomePersonagem}`);
-
-    //         if (checkPersonagem.checked) {
-
-    //             qtdPersonagensChecked++;
-    //             // console.log(`Quantidade de Suporte: ${qtdPersonagensChecked}`);
-    //             // console.log(`Personagem checado: ${listaNomesPersonagensSuporte[contadorPosicao]}`);
-
-    //         }
-
-    //         if (qtdPersonagensChecked == 3) {
-
-    //             for (let contadorPosicao2 = 0; contadorPosicao2 < listaNomesPersonagensSuporte.length; contadorPosicao2++) {
-    //                 const nomePersonagem2 = listaNomesPersonagensSuporteParaID[contadorPosicao2];
-    //                 const checkPersonagem2 = document.getElementById(`check_${nomePersonagem2}`);
-
-    //                 if (!checkPersonagem2.checked) {
-
-    //                     checkPersonagem2.disabled = true;
-
-    //                 }
-    //             }
-
-    //         } else {
-
-    //             checkPersonagem.disabled = false;
-
-    //         }
-    //     }
-
-    // }
 
 </script>
