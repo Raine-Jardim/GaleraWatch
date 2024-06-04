@@ -17,8 +17,7 @@
 
 <body>
 
-    <span id="mensagem_erro"></span>
-
+    <span id="mensagemErro"></span>
     <div class="login">
 
         <h2>LOGIN</h2>
@@ -46,6 +45,13 @@
 
 <script>
 
+    function sumirErro() {
+
+        mensagemErro.style.animation = 'sumir';
+        mensagemErro.style.animationDuration = '20s';
+        setTimeout(() => { mensagemErro.style.display = 'none' }, 5000);
+
+    }
 
     function entrar() {
 
@@ -53,8 +59,9 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagemErro.style.display = "block"
+            mensagemErro.innerHTML = "Preencha todos os campos!";
+            sumirErro();
             return false;
         }
 
