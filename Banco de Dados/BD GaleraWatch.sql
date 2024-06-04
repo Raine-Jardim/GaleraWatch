@@ -25,7 +25,7 @@ create table GaleraWatch.Perfil(
 ) auto_increment = 1000;
 
 select * from GaleraWatch.usuarios;
-select * from GaleraWatch.perfil;	
+select * from GaleraWatch.perfil;
 
 -- -------------------------------------- --
 

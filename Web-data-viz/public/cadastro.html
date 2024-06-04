@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+  <span id="mensagemErro"></span>
   <div class="cadastro">
 
     <h2>CADASTRO</h2>
@@ -54,7 +56,19 @@
 </html>
 
 <script>
+
+  let statusNumero = false;
+
+  function sumirErro() {
+
+    mensagemErro.style.animation = 'sumir';
+    mensagemErro.style.animationDuration = '20s';
+    setTimeout(() => {mensagemErro.style.display = 'none'}, 5000);
+
+  }
+
   function cadastrar() {
+
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -67,7 +81,38 @@
       confirmacaoSenhaVar == ""
     ) {
 
+      mensagemErro.style.display = 'block';
+      mensagemErro.innerHTML = 'Preencha todos os campos!';
+      sumirErro();
       return false;
+
+    } else {
+
+      verificarNumeros(senhaVar);
+
+      if (emailVar.indexOf('@') < 0) {
+
+        mensagemErro.style.display = 'block';
+        mensagemErro.innerHTML = 'E-mail inválido.';
+        sumirErro()
+        return false;
+
+      } else if (!statusNumero) {
+
+        mensagemErro.style.display = 'block';
+        mensagemErro.innerHTML = 'A senha precisa ter pelo menos um número.';
+        sumirErro()
+        return false;
+
+      } else if (senhaVar != confirmacaoSenhaVar) {
+
+        mensagemErro.style.display = 'block';
+        mensagemErro.innerHTML = 'Senha e confirmação de senha estão diferentes!';
+        sumirErro()
+        return false;
+
+      }
+
     }
 
     fetch(`/usuarios/cadastrar`, {
@@ -101,6 +146,21 @@
       });
 
     return false;
+  }
+
+  function verificarNumeros(senhaVar) {
+
+    for (let contador = 0; contador <= 9; contador++) {
+
+      if (senhaVar.indexOf(`${contador}`) >= 0) {
+
+        console.log('Tem número :D');
+        statusNumero = true;
+
+      }
+
+    }
+
   }
 
 </script>
