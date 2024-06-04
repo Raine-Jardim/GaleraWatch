@@ -16,10 +16,14 @@
 
     <div class="containerBotao">
         <div class="topBotao">
-            <img src="../assets/Damage_icon.png" alt="" class="icone">
-            <span>DANOS</span>
+            <div id="containerIcone">
+
+            </div>
+            <span id="funcoes">
+
+            </span>
         </div>
-            <button onclick="salvarCadastrarPersonagens()" class="botao">CONTINUAR</button>
+        <button onclick="salvarCadastrarPersonagens()" class="botao">CONTINUAR</button>
     </div>
 
     <span class="titulo">SELECIONE 3 PERSONAGENS</span>
@@ -104,6 +108,47 @@
 
         }
 
+        mostrarFuncaoEscolhida();
+
+    }
+
+    function mostrarFuncaoEscolhida() {
+
+        const funcaoEscolhida = sessionStorage.FUNCAO_USUARIO.split(",", 2);
+
+        for (contadorFuncoes = 0; contadorFuncoes < funcaoEscolhida.length; contadorFuncoes++) {
+
+            if (contadorFuncoes >= 1) {
+
+                funcoes.innerHTML += ', ';
+
+            }
+
+            if (funcaoEscolhida[contadorFuncoes] == 'Tanque') {
+
+                containerIcone.innerHTML = `<img src="../assets/Tank_icon.png" alt="" class="icone">`;
+                funcoes.innerHTML = `TANQUE`;
+
+            } else if (funcaoEscolhida[contadorFuncoes] == 'Dano') {
+
+                containerIcone.innerHTML += `<img src="../assets/Damage_icon.png" alt="" class="icone">`;
+                funcoes.innerHTML += `DANO`;
+                
+            } else if (funcaoEscolhida[contadorFuncoes] == 'Suporte') {
+                
+                containerIcone.innerHTML += `<img src="../assets/Support_icon.png" alt="" class="icone">`;
+                funcoes.innerHTML += `SUPORTE`;
+                
+            } else if (funcaoEscolhida[contadorFuncoes] == 'Todos') {
+                
+                containerIcone.innerHTML = `<img src="../assets/All_icon.png" alt="" class="icone">`;
+                funcoes.innerHTML = `TODOS`;
+
+            }
+
+        }
+
+
     }
 
     function verificarCheckTodos() {
@@ -113,11 +158,20 @@
         for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
 
             const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
+            const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
             const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
             if (checkPersonagem.checked) {
 
                 qtdPersonagensChecked++;
+
+                divPersonagem.style.boxShadow = `0px 0px 15px #b50000`;
+                divPersonagem.style.transform = `scale(1.07)`;
+                
+            } else {
+                
+                divPersonagem.style.boxShadow = 'none';
+                divPersonagem.style.transform = `scale(1)`;
 
             }
 
@@ -126,11 +180,20 @@
         for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
 
             const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
+            const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
             const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
             if (checkPersonagem.checked) {
 
                 qtdPersonagensChecked++;
+
+                divPersonagem.style.boxShadow = `0px 0px 15px #b50000`;
+                divPersonagem.style.transform = `scale(1.07)`;
+
+            } else {
+
+                divPersonagem.style.boxShadow = 'none';
+                divPersonagem.style.transform = `scale(1)`;
 
             }
 
@@ -139,11 +202,20 @@
         for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
 
             const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
+            const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
             const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
             if (checkPersonagem.checked) {
 
                 qtdPersonagensChecked++;
+
+                divPersonagem.style.boxShadow = `0px 0px 15px #b50000`;
+                divPersonagem.style.transform = `scale(1.07)`;
+
+            } else if (!checkPersonagem.checked) {
+
+                divPersonagem.style.boxShadow = 'none';
+                divPersonagem.style.transform = `scale(1)`;
 
             }
 
@@ -153,22 +225,28 @@
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 if (!checkPersonagem.checked) {
 
                     checkPersonagem.disabled = true;
+
+                    divPersonagem.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('${listaImagensPersonagensTanque[contadorPosicao]}')`;
 
                 }
             }
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 if (!checkPersonagem.checked) {
 
                     checkPersonagem.disabled = true;
+
+                    divPersonagem.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('${listaImagensPersonagensDano[contadorPosicao]}')`;
 
                 }
 
@@ -176,38 +254,52 @@
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 if (!checkPersonagem.checked) {
 
                     checkPersonagem.disabled = true;
 
+                    divPersonagem.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('${listaImagensPersonagensSuporte[contadorPosicao]}')`;
+
+
                 }
+
             }
 
         } else {
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensTanque.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensTanqueParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 checkPersonagem.disabled = false;
+
+                divPersonagem.style.backgroundImage = `url('${listaImagensPersonagensTanque[contadorPosicao]}')`;
 
             }
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensDano.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensDanoParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 checkPersonagem.disabled = false;
+
+                divPersonagem.style.backgroundImage = `url('${listaImagensPersonagensDano[contadorPosicao]}')`;
 
             }
 
             for (let contadorPosicao = 0; contadorPosicao < listaNomesPersonagensSuporte.length; contadorPosicao++) {
                 const nomePersonagemID = listaNomesPersonagensSuporteParaID[contadorPosicao];
+                const divPersonagem = document.getElementById(`div_${nomePersonagemID}`);
                 const checkPersonagem = document.getElementById(`check_${nomePersonagemID}`);
 
                 checkPersonagem.disabled = false;
+
+                divPersonagem.style.backgroundImage = `url('${listaImagensPersonagensSuporte[contadorPosicao]}')`;
 
             }
 

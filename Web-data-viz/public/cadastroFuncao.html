@@ -144,6 +144,7 @@
 
         }
 
+        sessionStorage.FUNCAO_USUARIO = listaFuncao;
         guardarBanco();
 
     }
@@ -195,7 +196,6 @@
             idUsuario: sessionStorage.ID_USUARIO
         }
 
-        // v nome do arquivo, depois da função que quer chamar
         fetch(`/personagens/cadastrarFuncao`, {
             method: "POST",
             headers: {
