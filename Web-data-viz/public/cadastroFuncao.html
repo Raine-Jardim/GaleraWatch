@@ -8,11 +8,13 @@
 
     <link rel="stylesheet" href="css/styleCadastroFuncao.css">
     <link rel="icon" href="./assets/icon/coracaovGalerawatch.png" />
-    
+
     <script src="js/sessao.js"></script>
 </head>
 
 <body onload="buscarDados()">
+
+    <span id="mensagemErro"></span>
 
     <div class="titulo">
         <h1>SELECIONE SUA FUNÇÃO</h1>
@@ -53,9 +55,19 @@
 
     const listaFuncao = [];
 
+    function sumirErro() {
+
+        mensagemErro.style.animation = 'sumir';
+        mensagemErro.style.animationDuration = '20s';
+        setTimeout(() => { mensagemErro.style.display = 'none' }, 5000);
+
+    }
+
+    let qtdChecked = 0;
+
     function contadorChecks() {
 
-        let qtdChecked = 0;
+        qtdChecked = 0;
 
         if (check_Tanque.checked) {
 
@@ -99,6 +111,8 @@
 
         } else if (check_Todos.checked) {
 
+            qtdChecked = 1;
+
             check_Tanque.disabled = true;
             check_Dano.disabled = true;
             check_Suporte.disabled = true;
@@ -120,32 +134,41 @@
 
     function guardarRoles() {
 
-        if (check_Tanque.checked) {
+        if (qtdChecked <= 0) {
 
-            listaFuncao.push('Tanque');
+            mensagemErro.style.display = "block"
+            mensagemErro.innerHTML = "Selecione pelo menos uma função!";
+            sumirErro();
 
+        } else {
+
+            if (check_Tanque.checked) {
+
+                listaFuncao.push('Tanque');
+
+            }
+
+            if (check_Dano.checked) {
+
+                listaFuncao.push('Dano');
+
+            }
+
+            if (check_Suporte.checked) {
+
+                listaFuncao.push('Suporte');
+
+            }
+
+            if (check_Todos.checked) {
+
+                listaFuncao.push('Todos');
+
+            }
+
+            sessionStorage.FUNCAO_USUARIO = listaFuncao;
+            guardarBanco();
         }
-
-        if (check_Dano.checked) {
-
-            listaFuncao.push('Dano');
-
-        }
-
-        if (check_Suporte.checked) {
-
-            listaFuncao.push('Suporte');
-
-        }
-
-        if (check_Todos.checked) {
-
-            listaFuncao.push('Todos');
-
-        }
-
-        sessionStorage.FUNCAO_USUARIO = listaFuncao;
-        guardarBanco();
 
     }
 
@@ -210,9 +233,7 @@
 
                 if (resposta.ok) {
 
-                    setTimeout(() => {
-                        window.location = "cadastroPersonagens.html";
-                    }, "2000");
+                    window.location = "cadastroPersonagens.html";
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";

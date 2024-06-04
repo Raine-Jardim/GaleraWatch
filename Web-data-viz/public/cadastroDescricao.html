@@ -14,6 +14,8 @@
 
 <body>
 
+    <span id="mensagemErro"></span>
+
     <div class="titulo">
         <h2>Quase lá!</h2>
         <div class="containerProgresso">
@@ -46,7 +48,8 @@
         </div>
     </div>
 
-    <input type="text" id="input_descricao" placeholder="Escreva uma mensagem para as pessoas saberem que tipo de pessoa você é!">
+    <input type="text" id="input_descricao"
+        placeholder="Escreva uma mensagem para as pessoas saberem que tipo de pessoa você é!">
 
     <button class="botao" onclick="validarDescricao()">FINALIZAR</button>
 
@@ -56,13 +59,24 @@
 
 <script>
 
+    function sumirErro() {
+
+        mensagemErro.style.animation = 'sumir';
+        mensagemErro.style.animationDuration = '20s';
+        setTimeout(() => { mensagemErro.style.display = 'none' }, 5000);
+
+    }
+
     function validarDescricao() {
 
         const descricao = input_descricao.value;
 
         if (descricao.length <= 0) {
 
-            alert('Para de ser antisocial');
+            mensagemErro.style.display = "block"
+            mensagemErro.innerHTML = "Selecione pelo menos uma função!";
+            sumirErro();
+
 
         } else {
 
@@ -91,9 +105,7 @@
 
                 if (resposta.ok) {
 
-                    setTimeout(() => {
-                        limparSessao();
-                    }, "2000");
+                    limparSessao();
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";

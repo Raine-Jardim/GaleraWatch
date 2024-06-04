@@ -11,9 +11,33 @@ body {
     font-size: 13pt;
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3)), url('https://www.gamereactor.pt/media/75/hanamuraisreturning_4137553b.jpg');
+            rgba(0, 0, 0, 0.3)), url('https://www.gamereactor.pt/media/75/hanamuraisreturning_4137553b.jpg');
     background-size: 100%;
     background-position: 100% 60%;
+
+}
+
+#mensagemErro {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    border: 3px solid #B50000;
+    border-radius: 10px;
+
+    font-weight: bold;
+    text-align: center;
+
+    height: 10%;
+    width: 25%;
+
+    position: fixed;
+    top: 10%;
+    left: 70%;
+
+    display: none;
 
 }
 
@@ -182,7 +206,9 @@ body {
 
 }
 
-#div_tracer, #div_venture, #div_widowmaker{
+#div_tracer,
+#div_venture,
+#div_widowmaker {
 
     margin-left: 105%;
 
@@ -220,4 +246,14 @@ body {
     height: 100%;
     opacity: 0%;
 
+}
+
+@keyframes sumir {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0%;
+    }
 }

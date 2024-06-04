@@ -14,6 +14,8 @@
 
 <body onload="carregarCardsPersonagens()">
 
+    <span id="mensagemErro"></span>
+
     <div class="containerBotao">
         <div class="topBotao">
             <div id="containerIcone">
@@ -66,6 +68,14 @@
 
     const listaPersonagensEscolhidos = [];
     let [personagem1, personagem2, personagem3] = listaPersonagensEscolhidos;
+
+    function sumirErro() {
+
+        mensagemErro.style.animation = 'sumir';
+        mensagemErro.style.animationDuration = '20s';
+        setTimeout(() => { mensagemErro.style.display = 'none' }, 5000);
+
+    }
 
     function carregarCardsPersonagens() {
 
@@ -133,14 +143,14 @@
 
                 containerIcone.innerHTML += `<img src="../assets/Damage_icon.png" alt="" class="icone">`;
                 funcoes.innerHTML += `DANO`;
-                
+
             } else if (funcaoEscolhida[contadorFuncoes] == 'Suporte') {
-                
+
                 containerIcone.innerHTML += `<img src="../assets/Support_icon.png" alt="" class="icone">`;
                 funcoes.innerHTML += `SUPORTE`;
-                
+
             } else if (funcaoEscolhida[contadorFuncoes] == 'Todos') {
-                
+
                 containerIcone.innerHTML = `<img src="../assets/All_icon.png" alt="" class="icone">`;
                 funcoes.innerHTML = `TODOS`;
 
@@ -167,9 +177,9 @@
 
                 divPersonagem.style.boxShadow = `0px 0px 15px #b50000`;
                 divPersonagem.style.transform = `scale(1.07)`;
-                
+
             } else {
-                
+
                 divPersonagem.style.boxShadow = 'none';
                 divPersonagem.style.transform = `scale(1)`;
 
@@ -311,7 +321,9 @@
 
         if (qtdPersonagensChecked < 3) {
 
-            alert("Selecione três personagens!");
+            mensagemErro.style.display = "block"
+            mensagemErro.innerHTML = "Selecione 3 personagens!";
+            sumirErro();
 
         } else {
 
@@ -389,9 +401,7 @@
 
                 if (resposta.ok) {
 
-                    setTimeout(() => {
                         window.location = "cadastroDescricao.html";
-                    }, "2000");
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
