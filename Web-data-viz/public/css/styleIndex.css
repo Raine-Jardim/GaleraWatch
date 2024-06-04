@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+
   margin: 0;
   padding: 0;
 
@@ -8,6 +13,7 @@ body {
   font-size: 13pt;
 
   background-color: white;
+  
 }
 
 :root {
@@ -252,7 +258,7 @@ header a {
 
   display: flex;
   align-items: center;
-  
+
   background-image: linear-gradient(rgba(255, 255, 255, 0.65),
       rgba(255, 255, 255, 0.65)), url('../assets/Fundos/Paraiso1.png');
   background-size: 100%;
@@ -475,7 +481,7 @@ footer {
   font-size: 15px;
   font-weight: bold;
   text-align: center;
-  
+
 }
 
 footer p {

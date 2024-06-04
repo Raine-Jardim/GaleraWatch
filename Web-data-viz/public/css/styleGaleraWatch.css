@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
 
     margin: 0;
@@ -12,8 +16,9 @@ body {
     font-family: "Karla", sans-serif;
     font-size: 16pt;
 
-    /* background-color: white; */
     background-image: url('../assets/Fundos/Rio_de_Janeiro.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: 100%;
 
 }
@@ -31,11 +36,11 @@ body {
 
     height: 11rem;
     width: 100%;
-    
+
 }
 
 .informacoesUsuario {
-    
+
     display: flex;
     justify-content: space-between;
 
@@ -46,7 +51,7 @@ body {
 }
 
 #iconePersonagem {
-    
+
     background-color: white;
     border: 3px solid #EA0202;
     border-radius: 100%;
@@ -128,7 +133,7 @@ body {
 .titulo {
 
     background-color: #B50000;
-    
+
     color: white;
     text-align: center;
 
