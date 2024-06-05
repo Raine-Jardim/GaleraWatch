@@ -21,6 +21,7 @@ var personagensRouter = require("./src/routes/personagens.js");
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var medidasRouter = require("./src/routes/medidas");
 
 
 app.use(express.json());
@@ -34,6 +35,7 @@ app.use("/usuarios", usuarioRouter);
 // Criar esse bagulho aqui !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // app.use("/funcao", funcaoRouter);
 app.use("/personagens", personagensRouter);
+app.use("/medidas", medidasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

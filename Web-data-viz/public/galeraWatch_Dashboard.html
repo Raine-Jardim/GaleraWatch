@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerawatch</title>
+
+    <link rel="stylesheet" href="./css/styleGaleraWatchDashboard.css">
+    <link rel="icon" href="./assets/icon/coracaovGalerawatch.png" />
+
+    <script src="./js/sessao.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="obterDadosGrafico()">
+
+    <div class="header">
+
+        <div class="informacoesUsuario">
+
+            <div id="div_perfilUsuario">
+                <div id="iconePersonagem">
+
+                </div>
+                <div>
+                    Apelido: <span id="span_nomeUsuario"></span>
+                    <br>
+                    Funcões: <span id="span_funcoes"></span>
+                    <br>
+                    Personagens: <span id="span_personagens"></span>
+                    <br>
+                </div>
+            </div>
+            <span id="span_mensagem"></span>
+        </div>
+
+        <div class="menu">
+
+            <a href="galeraWatch.html">PÁGINA INICIAL</a>
+            <a href="galeraWatch_ListaUsuarios.html">USUÁRIOS</a>
+            <a href="galeraWatch_Dashboard.html">DASHBOARD</a>
+            <a onclick="limparSessao()">SAIR</a>
+
+        </div>
+    </div>
+
+    <div class="containerConteudo">
+
+        <div class="containerKpis">
+
+            <div class="kpi" id="kpi_FuncaoMaisEscolhida">
+
+                <span id="funcaoMaisEscolhida">Haai</span>
+
+            </div>
+
+            <div class="kpi" id="kpi_PersonagemMaisEscolhido">
+
+                <span id="personagemMaisEscolhido">Haai</span>
+
+            </div>
+
+        </div>
+
+        <div class="graficoPersonagens">
+
+            <canvas id="myChartCanvas"></canvas>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    const listaPersonagensUsuario = [];
+
+    listaPersonagensUsuario.push(sessionStorage.PERSONAGEM1_USUARIO);
+    listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM2_USUARIO);
+    listaPersonagensUsuario.push(' ' + sessionStorage.PERSONAGEM3_USUARIO);
+
+    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
+    span_funcoes.innerHTML = sessionStorage.FUNCAO_USUARIO;
+    span_personagens.innerHTML = listaPersonagensUsuario;
+    span_mensagem.innerHTML = sessionStorage.MENSAGEM_USUARIO;
+
+
+
+    const listaNomesPersonagens = ['D.Va', 'Doomfist', 'Junker Queen', 'Mauga', 'Orisa', 'Ramattra', 'Reinhardt', 'Roadhog', 'Sigma', 'Winston', 'Wrecking Ball', 'Zarya', 'Ashe', 'Bastion', 'Cassidy', 'Echo', 'Genji', 'Hanzo', 'Junkrat', 'Mei', 'Pharah', 'Reaper', 'Sojourn', 'Soldado: 76', 'Sombra', 'Symmetra', 'Torbjörn', 'Tracer', 'Venture', 'Widowmaker', 'Ana', 'Baptiste', 'Brigitte', 'Illari', 'Kiriko', 'Lifeweaver', 'Lúcio', 'Mercy', 'Moira', 'Zenyatta'];
+
+    const listaImagensPersonagens = ['https://abre.ai/imagemdva', 'https://abre.ai/imagemdoomfist', 'https://abre.ai/imagemjunkerqueen', 'https://abre.ai/imagemmauga', 'https://abre.ai/imagemorisa', 'https://abre.ai/imagemramattra', 'https://abre.ai/imagemreinhardt', 'https://abre.ai/imagemroadhog', 'https://abre.ai/imagemsigma', 'https://abre.ai/imagemwinston', 'https://abre.ai/imagemwreckingball', 'https://abre.ai/imagemzarya', 'https://abre.ai/imagemashe', 'https://abre.ai/imagembastion', 'https://abre.ai/imagemcassidy', 'https://abre.ai/imagemecho', 'https://abre.ai/imagemgenji', 'https://abre.ai/imagemhanzo', 'https://abre.ai/imagemjunkrat', 'https://abre.ai/imagemmei', 'https://abre.ai/imagemphara', 'https://abre.ai/imagemreaper', 'https://abre.ai/imagemsojourn', 'https://abre.ai/imagemsoldado76', 'https://abre.ai/imagemsombra', 'https://abre.ai/imagemsymmetra', 'https://abre.ai/imagemtorbjorn', 'https://abre.ai/imagemtracer', 'https://abre.ai/imagemventure', 'https://abre.ai/imagemwidowmaker', 'https://abre.ai/imagemana', 'https://abre.ai/imagembaptiste', 'https://abre.ai/imagembrigitte', 'https://abre.ai/imagemillari', 'https://abre.ai/imagemkiriko', 'https://abre.ai/imagemlifeweaver', 'https://abre.ai/imagemlucio', 'https://abre.ai/imagemmercy', 'https://abre.ai/imagemmoira', 'https://abre.ai/imagemzenyatta'];
+
+    for (let contador = 0; contador < listaNomesPersonagens.length; contador++) {
+
+        if (listaNomesPersonagens[contador] == sessionStorage.PERSONAGEM1_USUARIO) {
+
+            iconePersonagem.style.backgroundImage = `url('${listaImagensPersonagens[contador]}'`;
+
+            break;
+
+        }
+
+    }
+
+    let proximaAtualizacao;
+
+    function obterDadosGrafico() {
+
+        if (proximaAtualizacao != undefined) {
+
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/pegarPersonagensDashboard`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Personagens mais Jogados',
+                data: [],
+                fill: false,
+                backgroundColor: '#b50000',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.nome);
+            dados.datasets[0].data.push(registro.total);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            color: 'black'
+                        },
+                        ticks: {
+                            color: 'black'
+                        }
+                    },
+
+                    y: {
+                        title: {
+                            color: 'black'
+                        },
+                        ticks: {
+                            color: 'black'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+
+                                size: '17'
+
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(dados, myChart) {
+
+        fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados();
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    if (novoRegistro[0].nome == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].nome)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico-
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].nome); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].total); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+</script>

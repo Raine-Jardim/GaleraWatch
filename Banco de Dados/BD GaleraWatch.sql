@@ -50,11 +50,50 @@ WHERE us.email = 'parana@email.com' AND us.senha = '12345';
 
 -- -------------------------- --
 
-select personagem1,
-	   personagem2,
-       personagem3
-from Galerawatch.perfil;
+create view Galerawatch.vw_contadorPersonagens
+as
+select personagem1 nome, count(personagem1) contador from Galerawatch.perfil
+group by personagem1
+union
+select personagem2, count(personagem2) from Galerawatch.perfil
+group by personagem2
+union
+select personagem3, count(personagem3) from Galerawatch.perfil
+group by personagem3 order by nome;
 
--- ---
+-- ----
 
-select funcao from Galerawatch.perfil;
+create view Galerawatch.vw_totalPersonagens
+as
+select nome, sum(contador) total from Galerawatch.vw_contadorPersonagens
+group by nome
+order by total desc;
+
+-- ----
+
+select * from Galerawatch.vw_totalPersonagens;
+
+select nome, total from Galerawatch.vw_totalPersonagens
+where total >= (select max(total) from Galerawatch.vw_totalPersonagens);
+
+-- -------------
+
+create view Galerawatch.vw_totalFuncoes
+as
+select 'Taque' Funcao, count(funcao) Contador from Galerawatch.perfil
+where funcao like '%Tanque%'
+union
+select 'Dano 'Funcao, count(funcao) Contador from Galerawatch.perfil
+where funcao like '%Dano%'
+union
+select 'Suporte' Funcao, count(funcao) Contador from Galerawatch.perfil
+where funcao like '%Suporte%'
+union
+select 'Todos' Funcao, count(funcao) Contador from Galerawatch.perfil
+where funcao like 'Todos';
+
+select funcao, contador from Galerawatch.vw_totalFuncoes
+where contador >= (select max(contador) from Galerawatch.vw_totalFuncoes);
+
+-- ------------------------------
+

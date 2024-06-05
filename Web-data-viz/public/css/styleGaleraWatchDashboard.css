@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "Karla", sans-serif;
+    font-size: 16pt;
+
+    background-image: url('../assets/Fundos/Rio_de_Janeiro.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+
+}
+
+/* HEADER */
+
+.header {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #ffecec81;
+    border-bottom: 2px solid #EA0202;
+
+    height: 11rem;
+    width: 100%;
+
+}
+
+.informacoesUsuario {
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1.5%;
+    padding-bottom: 1%;
+    padding-top: 0%;
+
+}
+
+#iconePersonagem {
+
+    background-color: white;
+    border: 3px solid #EA0202;
+    border-radius: 100%;
+
+    margin-right: 5%;
+
+    width: 117px;
+    height: 117px;
+
+    background-position: 100%;
+    background-size: 100%;
+
+}
+
+#div_perfilUsuario {
+
+    display: flex;
+    align-items: center;
+
+    width: 50%;
+
+    color: #b50000;
+    font-weight: bold;
+
+}
+
+#div_perfilUsuario span {
+
+    color: black;
+    font-weight: 400;
+
+}
+
+#span_mensagem {
+
+    display: flex;
+    align-items: center;
+
+    background-color: #FFECEC;
+    border: 3px solid #EA0202;
+    border-radius: 10px;
+
+    width: 45%;
+    height: 80%;
+    padding-right: 1%;
+    padding-left: 1%;
+
+}
+
+.menu {
+
+    display: flex;
+    justify-content: space-evenly;
+
+    font-weight: bold;
+
+}
+
+.menu a {
+
+    color: #b50000;
+    text-decoration: none;
+
+}
+
+/* CONTEÚDO */
+
+.containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    padding-bottom: 2%;
+    background-color: white;
+
+}
+
+.containerKpis {
+
+    display: flex;
+    justify-content: space-evenly;
+
+    width: 100%;
+    height: 20vh;
+
+    padding: 1%;
+
+}
+
+.kpi {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFECEC;
+    border: 2px solid #b50000;
+    border-radius: 10px;
+
+    width: 20%;
+    height: 90%;
+
+}
+
+.graficoPersonagens {
+
+    border: 3px solid #b50000;
+    border-radius: 10px;
+
+    padding: 1%;
+
+    background-color: #FFECEC;
+
+}
+
+#myChartCanvas {
+
+    color: black;
+    width: 70vw;
+
+}
