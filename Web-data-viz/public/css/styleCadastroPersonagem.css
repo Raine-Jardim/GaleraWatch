@@ -246,6 +246,8 @@ body {
     height: 100%;
     opacity: 0%;
 
+    cursor: pointer;
+
 }
 
 @keyframes sumir {
