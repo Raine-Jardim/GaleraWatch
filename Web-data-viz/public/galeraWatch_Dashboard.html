@@ -53,14 +53,10 @@
             <div class="kpi" id="kpi_FuncaoMaisEscolhida">
 
 
-
-                <span id="funcaoMaisEscolhida">Haai</span>
-
             </div>
 
             <div class="kpi" id="kpi_PersonagemMaisEscolhido">
 
-                <span id="personagemMaisEscolhido">Haai</span>
 
             </div>
 
@@ -137,17 +133,12 @@
 
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta) {
 
         console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
             datasets: [{
@@ -163,7 +154,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.nome);
@@ -178,7 +168,6 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'bar',
             data: dados,
@@ -238,15 +227,24 @@
                     const personagem = json.personagem[0].nome;
                     const qtdPersonagem = json.personagem[0].total;
 
-                    funcaoMaisEscolhida.innerHTML = `<img src="./assets/${funcao.trim()}_icon.png" alt="">`;
-                    funcaoMaisEscolhida.innerHTML += funcao;
-                    funcaoMaisEscolhida.innerHTML += qtdFuncao;
+                    kpi_FuncaoMaisEscolhida.innerHTML = `
+                    <span class="tituloKpi">Função mais escolhida</span>
+                    <div class="card"
+                    style="background-image: url('./assets/${funcao.trim()}_icon.png'); background-size: 85%; background-position: 50% 10%;">
+                    <span>${funcao.toUpperCase()}</span>
+                </div>
+                <span>Escolhida <span class="quantidade">${qtdFuncao}</span> vezes!</span>`;
 
                     for (let contador = 0; contador < listaNomesPersonagens.length; contador++) {
 
                         if (listaNomesPersonagens[contador] == personagem) {
 
-                            personagemMaisEscolhido.innerHTML = `<img src="${listaImagensPersonagens[contador]}" alt="">`;
+
+                            kpi_PersonagemMaisEscolhido.innerHTML = `<span class="tituloKpi">Personagem mais escolhido</span>
+                <div class="card" style="background-image: url('${listaImagensPersonagens[contador]}');">
+                    <span>${personagem.toUpperCase()}</span>
+                </div>
+                <span>Escolhido <span class="quantidade">${qtdPersonagem}</span> vezes!</span>`;
 
                             break;
 
@@ -254,8 +252,6 @@
 
                     }
 
-                    personagemMaisEscolhido.innerHTML += personagem;
-                    personagemMaisEscolhido.innerHTML += qtdPersonagem;
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
