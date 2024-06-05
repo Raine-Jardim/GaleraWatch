@@ -197,12 +197,22 @@ body {
 
 }
 
+.instrucao {
+    
+    padding-top: 1%;
+
+}
+
 #input_descricao {
 
     margin-top: 1%;
 
     width: 40%;
-    height: 40%;
+    height: 30%;
+
+    padding: 1%;
+
+    font-size: 18pt;
 
     border-radius: 10px;
     border: 2px solid black;
@@ -210,6 +220,15 @@ body {
     display: flex;
     justify-content: start;
     align-items: start;
+
+}
+
+#contadorMensagem {
+
+    color: #2e3a508e;
+    position: absolute;
+    top: 74%;
+    right: 30%;
 
 }
 

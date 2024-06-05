@@ -46,10 +46,13 @@
                 </div>
             </div>
         </div>
+
+        <span class="instrucao">Agora insira uma mensagem para as pessoas saberem que tipo de pessoa você é!</span>
     </div>
 
-    <input type="text" id="input_descricao"
-        placeholder="Escreva uma mensagem para as pessoas saberem que tipo de pessoa você é!">
+    <textarea id="input_descricao" maxlength = "150" placeholder="Gosto muito de jogar de Mercy!" onkeydown="contarMensagem()"></textarea>
+
+    <span id="contadorMensagem"></span>
 
     <button class="botao" onclick="validarDescricao()">FINALIZAR</button>
 
@@ -64,6 +67,14 @@
         mensagemErro.style.animation = 'sumir';
         mensagemErro.style.animationDuration = '20s';
         setTimeout(() => { mensagemErro.style.display = 'none' }, 5000);
+
+    }
+
+    function contarMensagem() {
+
+        const descricao = input_descricao.value;
+
+        contadorMensagem.innerHTML = `(${descricao.length}/150)`;
 
     }
 

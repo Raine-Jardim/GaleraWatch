@@ -96,4 +96,3 @@ select funcao, contador from Galerawatch.vw_totalFuncoes
 where contador >= (select max(contador) from Galerawatch.vw_totalFuncoes);
 
 -- ------------------------------
-
