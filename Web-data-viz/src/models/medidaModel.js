@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function personagensMaisEscolhidos() {
 
-    var instrucaoSql = `select * from Galerawatch.vw_totalPersonagens`;
+    var instrucaoSql = `select * from GaleraWatch.vw_totalPersonagens`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -12,8 +12,8 @@ function personagemMaisEscolhido() {
 
     var instrucaoSql = `select nome, 
     total 
-from Galerawatch.vw_totalPersonagens
-where total >= (select max(total) from Galerawatch.vw_totalPersonagens)`;
+from GaleraWatch.vw_totalPersonagens
+where total >= (select max(total) from GaleraWatch.vw_totalPersonagens)`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -21,8 +21,8 @@ where total >= (select max(total) from Galerawatch.vw_totalPersonagens)`;
 
 function funcaoMaisEscolhida() {
 
-    var instrucaoSql = `select funcao, contador from Galerawatch.vw_totalFuncoes
-    where contador >= (select max(contador) from Galerawatch.vw_totalFuncoes)`;
+    var instrucaoSql = `select funcao, contador from GaleraWatch.vw_totalFuncoes
+    where contador >= (select max(contador) from GaleraWatch.vw_totalFuncoes)`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

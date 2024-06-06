@@ -9,7 +9,7 @@ function autenticarCadastroFuncao(email, senha) {
        nome,
        email,
        senha
-from Galerawatch.usuarios
+from GaleraWatch.Usuarios
 WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -30,8 +30,8 @@ function autenticarLogin(email, senha) {
        per.personagem2,
        per.personagem3,
        per.mensagem
-from Galerawatch.usuarios us
-inner join Galerawatch.perfil as per on per.fkUsuario = us.id
+from GaleraWatch.Usuarios us
+inner join GaleraWatch.Perfil as per on per.fkUsuario = us.id
 WHERE us.email = '${email}' AND us.senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -48,8 +48,8 @@ function listarUsuarios() {
        per.personagem2,
        per.personagem3,
        per.mensagem
-from Galerawatch.usuarios us
-inner join Galerawatch.perfil as per on per.fkUsuario = us.id;
+from GaleraWatch.Usuarios us
+inner join GaleraWatch.Perfil as per on per.fkUsuario = us.id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -62,7 +62,7 @@ function cadastrar(nome, email, senha) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuarios (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
+        INSERT INTO Usuarios (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
